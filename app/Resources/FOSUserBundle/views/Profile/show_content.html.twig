@@ -1,0 +1,86 @@
+{% extends "base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <div class="container-flow fos">
+        
+        {# mobile view #}
+        <div class="visible-xs">
+            <div class="container">
+                <div class="text-center fos-padding">
+                    <div class="well fos-padding fos-xs-menu-margin">
+                        <div class="row">
+                            <ul class="list-inline no-margin">
+                                <li>
+                                    <div class="fos-link">
+                                        Welcome {{ app.user.username }}
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="fos-link">
+                                        <a href="{{ path('logout') }}">
+                                            Logout <i class="fa fa-sign-out"></i>
+                                        </a>
+                                    </div>
+                                </li>    
+                            </ul>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# end mobile view #}
+        
+        {# tablet, desktop view #}
+        <div class="hidden-xs">
+            <div class="text-center pull-right fos-padding">
+                <div class="well fos-padding fos-sm-menu-margin-right">
+                    <div class="row">
+                        <ul class="list-inline no-margin">
+                            <li>
+                                <div class="fos-link">
+                                    Welcome {{ app.user.username }}
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="fos-link">
+                                    <a href="{{ path('logout') }}">
+                                        Logout <i class="fa fa-sign-out"></i>
+                                    </a>
+                                </div>
+                            </li>    
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# end tablet, desktop view #}
+        
+        {# form #}
+        <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
+            <div class="fos_user_user_show">
+                <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+            </div>
+
+            <div>
+                <a href="{{ path('product_show', { 'id': 1 }) }}">
+                    <button class="btn btn-primary block full-width m-b margin-top-30">
+                        Go to products
+                    </button>
+                </a>
+            </div>
+        </div>
+        {# end form #}
+        
+        <div class="clearfix"></div>
+
+    </div>
+{% endblock %}

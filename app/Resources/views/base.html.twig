@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}TCO{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block stylesheets %}
+            
+        <!-- vendor css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
+
+        <!-- own css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fos.css') }}">
+        
+        {% endblock %}
+
+    </head>
+    
+    <body>
+        
+    {% block body %}{% endblock %}
+    
+    {% block javascripts %}
+        <!-- Mainly scripts -->
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-2.1.1.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
+
+    {% endblock %}
+    
+    </body>
+</html>

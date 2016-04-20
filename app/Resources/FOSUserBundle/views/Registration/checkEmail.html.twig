@@ -1,0 +1,23 @@
+{% set body_parameters = 'class="gray-bg"'%}
+{% extends "base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <div class="container-flow fos">
+        <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
+            
+            <p class="font-size-14 margin-bottom-30">An email has been sent to {{ user.email }}. It contains an activation link you must click to activate your account.</p>
+            
+            <div>
+                <a href="{{ path('login') }}">
+                    <button class="btn btn-primary">
+                        Login
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

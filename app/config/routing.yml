@@ -1,0 +1,20 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+admin:
+    resource: "routing/admin_routing.yml"
+    prefix: /admin
+
+user:
+    resource: "routing/user_routing.yml"
+    prefix: /user
+
+login:
+  path: /
+  defaults: {_controller: AppBundle:Front:index}
+
+register:
+  path: /register
+
+logout:
+  path: /logout

@@ -1,0 +1,95 @@
+{# password reset request #}
+
+{% set body_parameters = 'class="gray-bg"'%}
+{% extends "base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    
+    <div class="visible-xs fos">
+        <div class="middle-box text-center loginscreen animated fadeInDown fos login fos-padding">
+            <div class="well fos-padding fos-xs-menu-margin">
+                <div class="row">
+                    <div class="col-xs-12 fos-link">
+                        <a href="{{ path('login') }}">
+                            Return to login page
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+                            
+        {% if app.request.cookies.has('cart_hash') %}
+            
+        <div class="middle-box text-center loginscreen animated fadeInDown fos login fos-padding">
+            <div class="well fos-padding fos-xs-menu-margin">
+                <div class="row">
+                    <div class="col-xs-12 fos-link">
+                        <a href="{{ path('cart_show') }}">
+                            Return to shoping cart
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+                            
+        {% endif %}
+        
+    </div>
+    
+    <div class="hidden-xs fos">
+        
+        {% if app.request.cookies.has('cart_hash') %}
+            
+        <div class="middle-box text-center loginscreen animated fadeInDown fos login  pull-left fos-padding">
+            <div class="well fos-padding fos-sm-menu-margin-left">
+                <div class="row">
+                    <div class="col-xs-12 fos-link">
+                        <a href="{{ path('cart_show') }}">
+                            Return to shoping cart
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+                            
+        {% endif %}
+
+        <div class="middle-box text-center loginscreen animated fadeInDown fos login  pull-right fos-padding">
+            <div class="well fos-padding fos-sm-menu-margin-right">
+                <div class="row">
+                    <div class="col-xs-12 fos-link">
+                        <a href="{{ path('login') }}">
+                            Return to login page
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+                            
+    <div class="middle-box text-center loginscreen animated fadeInDown fos login">
+        <div class="screen-center col-xs-12">
+            <img class="img-responsive center-block margin-bottom-20 x-customer-logo" src="{{ asset('assets/images/vendor/collaborative-press-logo-gray.png') }}">
+
+            {% block fos_user_content %}
+            {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+            {% endblock fos_user_content %}
+
+        </div>
+    </div>
+                
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/customer.js') }}"></script>
+{% endblock %}

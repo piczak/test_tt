@@ -1,0 +1,43 @@
+body {
+    background-color:#EEEEEE;
+}
+.fos hr {
+    margin-bottom:0;
+    margin-top:0;
+    border: 0;
+    border-top: 1px solid #555;
+}
+.fos-link a {
+    padding:10px;
+}
+.fos .fos-padding {
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.fos-sm-menu-margin-right {
+    margin-top:10px;
+    margin-right:20px;
+}
+.fos-sm-menu-margin-left {
+    margin-top:10px;
+    margin-left:20px;
+}
+.fos-xs-menu-margin {
+    margin-top:10px;
+}
+.fos_user_user_show p {
+    font-size:14px;
+    padding:10px;
+}
+.fos .well {
+    margin-bottom:0px;
+}
+
+@media (max-width:767px) {
+/* skeleton frame margins */
+    .box-center {
+        display: table;
+        margin-right:auto;
+        margin-left:auto;
+    }
+}

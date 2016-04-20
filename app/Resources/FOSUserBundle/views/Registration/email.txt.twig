@@ -1,0 +1,17 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block subject %}
+    {% autoescape false %}
+        Welcome {{ user.username }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+    <div class="col-xs-12">
+        <p>Hello {{ user.username }}</p>
+        <p>To finish activating your account - please visit {{ confirmationUrl }}</p>
+        <br></br>
+        <p>Regards</p>
+        <p>COLLABORATIVE.press Team</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% form_theme form ':Form:fos.html.twig' %}
+
+{% block body %}
+    
+    <div class="container-flow fos">
+        
+        {# mobile view #}
+        <div class="visible-xs">
+            <div class="container">
+                <div class="text-center fos-padding">
+                    <div class="well fos-padding fos-xs-menu-margin">
+                        <div class="row">
+                            <div class="col-xs-12 fos-link">
+                                <a href="{{ path('login') }}">
+                                    Return to login page
+                                </a>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if app.request.cookies.has('cart_hash') %}
+
+                <div class="text-center fos-padding">
+                    <div class="well fos-padding fos-xs-menu-margin">
+                        <div class="row">
+                            <div class="col-xs-12 fos-link">
+                                <a href="{{ path('cart_show') }}">
+                                    Return to shoping cart
+                                </a>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+                
+            </div>
+        </div>
+        {# end mobile view #}
+        
+        {# tablet, desktop view #}
+        <div class="hidden-xs">
+
+            {% if app.request.cookies.has('cart_hash') %}
+
+            <div class="text-center pull-left fos-padding">
+                <div class="well fos-padding fos-sm-menu-margin-left">
+                    <div class="row">
+                        <div class="col-sm-12 fos-link">
+                            <a href="{{ path('cart_show') }}">
+                                Return to shoping cart
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
+            <div class="text-center pull-right fos-padding">
+                <div class="well fos-padding fos-sm-menu-margin-right">
+                    <div class="row">
+                        <div class="col-sm-12 fos-link">
+                            <a href="{{ path('login') }}">
+                                Return to login page
+                            </a>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# end tablet, desktop view #}
+        
+        {# form #}
+        <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            
+            <p class="margin-top-20 margin-bottom-0"><strong>E-mail</strong></p>
+            {{ form_widget(form.email) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Username</strong></p>
+            {{ form_widget(form.username) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Password</strong></p>
+            {{ form_widget(form.plainPassword.first) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Confirm password</strong></p>
+            {{ form_widget(form.plainPassword.second) }}
+            
+            <div>
+                <input type="submit" value="Register" class="btn btn-primary margin-top-20"/>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+        {# end form #}
+        
+        <div class="clearfix"></div>
+
+    </div>
+
+{% endblock %}

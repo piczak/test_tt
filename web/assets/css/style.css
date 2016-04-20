@@ -1,0 +1,362 @@
+/* skeleton frame margins, no side paddings on mobile*/
+.container-fluid-frame {
+    padding:20px;
+}
+
+.note-editable {
+    min-height:210px;
+}
+
+.no-gutter {
+    padding:0px;
+}
+
+.no-margin {
+    margin:0px;
+}
+.no-margin-vertical {
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.gutter1 {
+    padding:1px;
+}
+.dummy {
+    padding-top: 100%;
+}
+.container-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+.container-center:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.container-center img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+
+
+
+
+/* center element vertically and horizontally */
+.vh-center-parent {
+    width:100vw;
+    height:100vh;
+}
+.vh-center-child {
+    top:40%;
+    position: absolute;
+    transform: translateY(-50%);
+    width:100%;
+}
+
+/* center element vertically */
+.v-center-parent {
+    width:100vw;
+    height:100vh;
+}
+.v-center-child {
+    top:50%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+/* center div acording to another one  */
+.v-center {
+    display: flex;
+    align-items: center;
+}
+.margin-top-12 {
+    margin-top:12px;
+}
+.margin-top-0 {
+    margin-top:0px;
+}
+.margin-top-5 {
+    margin-top:5px;
+}
+.margin-top-10 {
+    margin-top:10px;
+}
+.margin-top-20 {
+    margin-top:20px;
+}
+.margin-top-30 {
+    margin-top:30px;
+}
+.margin-top-40 {
+    margin-top:40px;
+}
+.margin-top-50 {
+    margin-top:50px;
+}
+.margin-bottom-0 {
+    margin-bottom:0px;
+}
+.margin-bottom-5 {
+    margin-bottom:5px;
+}
+.margin-bottom-10 {
+    margin-bottom:10px;
+}
+.margin-bottom-20 {
+    margin-bottom:20px;
+}
+.margin-bottom-30 {
+    margin-bottom:30px;
+}
+.margin-bottom-40 {
+    margin-bottom:40px;
+}
+.margin-bottom-50 {
+    margin-bottom:50px;
+}
+.margin-5 {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.margin-10 {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.margin-20 {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.margin-30 {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.margin-40 {
+    margin-top:40px;
+    margin-bottom:40px;
+}
+.margin-50 {
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.padding-10 {
+    padding:10px 0px;
+}
+.padding-5 {
+    padding:5px;
+}
+.font-size-40 {
+    font-size:40px;
+}
+.font-size-24 {
+    font-size:24px;
+}
+.font-size-18 {
+    font-size:18px;
+}
+.font-size-14 {
+    font-size:14px;
+}
+.font-size-12 {
+    font-size:12px;
+}
+.font-size-10 {
+    font-size:10px;
+}
+/* table cell in horizontal line */
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+
+/* no break on white space*/
+.nowarp {
+    white-space:nowrap;
+}
+.word-break {
+      /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.select {
+    padding-top:3px;
+    padding-bottom:3px;
+}
+
+.gutter5 {
+    padding-left:5px;
+    padding-right:5px;
+}
+
+/* removing style and leaving on action of input file and input submit */
+.fileInput {
+    overflow: hidden;
+    position: relative;
+}
+.fileInput [type=file] {
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    cursor:pointer;
+}
+.fileInput [type=submit] {
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+    cursor:pointer;
+}
+
+
+.pull-bottom {
+    
+    float: none;
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+
+/* modal */
+
+.inmodal .modal-header {
+    padding: 10px;
+}
+.modal-body {
+    padding:10px;
+}
+.modal-footer {
+    padding:10px;
+}
+
+.fa-files-o:hover {
+    cursor: pointer;
+}
+.zclip:hover {
+    cursor: pointer;
+}
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (max-width:991px) {
+
+}
+
+@media (max-width:767px) {
+/* skeleton frame margins */
+    .container-fluid-frame {
+        padding:10px;
+    }
+}
+
+/* other */
+
+.break-all {
+    word-break: break-all;
+}
+.color-important {
+    color: #000;
+}
+/* file input */
+.better-input .btn, .better-input .form-control {
+    height: 30px;
+}
+.better-input .btn {
+    padding-top: 4px;
+}
+form .alert-danger {
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+.product-img-container {
+    height: 100px;
+    line-height: 100px;
+}
+.product-img-container img {
+    max-height: 76px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.table-no-border tbody tr td {
+    border: none;
+}
+
+/* Large desktop */
+@media (min-width: 979px) {
+    .table>tbody>tr>td.cart-image-container {
+        max-height: 100px;
+        width: 100px;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .table>tbody>tr>td.cart-image-container {
+        max-height: 80px;
+        width: 80px;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .table>tbody>tr>td.cart-image-container {
+        max-height: 50px;
+        width: 50px;
+    }
+}
+@media (max-width: 480px) {
+    .table>tbody>tr>td.cart-image-container,
+    .table>tfoot>tr>td.cart-image-container {
+        display: none;
+    }
+}
+
+td.cart-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.table-space, .table > tbody > tr > td.table-space {
+    background: #F7F7F7;
+    border-top: none;
+}
