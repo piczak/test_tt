@@ -1,15 +1,16 @@
-{% set body_parameters = 'class="test1"'%}
 {% extends "base.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% form_theme form ':Form:fos.html.twig' %}
+
 {% block body %}
-    <div class="middle-box text-center fos login">
-        <div class="screen-center col-xs-10 col-sm-4 col-md-3">
+    <div class="container-flow fos">
+        <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
             {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
                 {{ form_widget(form) }}
                 <div>
-                    <input type="submit" class="btn btn-primary block full-width m-b" value="{{ 'resetting.reset.submit'|trans }}" />
+                    <input type="submit" class="btn btn-primary" value="{{ 'resetting.reset.submit'|trans }}" />
                 </div>
             {{ form_end(form) }}
         </div>

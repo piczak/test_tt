@@ -6,6 +6,8 @@
 {% block body %}
     {% block fos_user_content %}
     <div class="container-flow fos">
+
+        {# mobile view #}
         <div class="visible-xs">
             <div class="container">
                 <div class="text-center fos-padding">
@@ -33,9 +35,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="hidden-xs fos">
-            <div class="middle-box text-center loginscreen animated fadeInDown fos login  pull-right fos-padding ">
+        {# end mobile view #}
+        
+        {# tablet, desktop view #}
+        <div class="hidden-xs">
+            <div class="text-center pull-right fos-padding ">
                 <div class="well fos-padding fos-sm-menu-margin-right">
                     <div class="row">
                         <ul class="list-inline no-margin">
@@ -59,25 +63,42 @@
                 </div>
             </div>
         </div>
-
-        <div class="middle-box text-center loginscreen animated fadeInDown">
-            <div class="screen-center col-xs-12">
+        {# end tablet, desktop view #}
+        
+        {# form #}                           
+        <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
                 
-                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-                {% if targetUrl %}
-                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+
+            {% if targetUrl %}
+            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            {% endif %}
+
+            <div>
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                
+                <a href="{{ path('admin_test_page') }}">
+                    <button class="btn btn-primary">
+                        Go to admin area
+                    </button>
+                </a>
+                
+                {% elseif is_granted('ROLE_USER')%}
+                
+                <a href="{{ path('user_test_page') }}">
+                    <button class="btn btn-primary">
+                        Go to user area
+                    </button>
+                </a>
+                    
                 {% endif %}
-
-                <div>
-                    <a href="{{ path('admin_test_page') }}">
-                        <button class="btn btn-primary block full-width m-b margin-top-30">
-                            Go to products
-                        </button>
-                    </a>
-                </div>
-
+                
             </div>
         </div>
+        {# end form #}
+        
+        <div class="clearfix"></div>
     </div>
     {% endblock fos_user_content %}
 {% endblock %}
