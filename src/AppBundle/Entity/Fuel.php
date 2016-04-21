@@ -5,8 +5,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Fuel
+ *
+ * @ORM\Table(name="fuel")
  * @ORM\Entity
- * @ORM\Table(name="fuel", options={"collate":"utf8_unicode_ci", "charset":"utf8", "engine":"InnoDB"})
  */
 class Fuel
 {

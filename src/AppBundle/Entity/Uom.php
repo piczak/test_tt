@@ -5,19 +5,26 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Currency
+ * Uom
  *
- * @ORM\Table(name="currency")
+ * @ORM\Table(name="uom")
  * @ORM\Entity
  */
-class Currency
+class Uom
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="currency", type="string", length=255, nullable=false)
+     * @ORM\Column(name="uom", type="string", length=255, nullable=false)
      */
-    private $currency;
+    private $uom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="unit", type="string", length=255, nullable=false)
+     */
+    private $unit;
 
     /**
      * @var string
@@ -45,27 +52,51 @@ class Currency
 
 
     /**
-     * Set currency
+     * Set uom
      *
-     * @param string $currency
+     * @param string $uom
      *
-     * @return Currency
+     * @return Uom
      */
-    public function setCurrency($currency)
+    public function setUom($uom)
     {
-        $this->currency = $currency;
+        $this->uom = $uom;
 
         return $this;
     }
 
     /**
-     * Get currency
+     * Get uom
      *
      * @return string
      */
-    public function getCurrency()
+    public function getUom()
     {
-        return $this->currency;
+        return $this->uom;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return Uom
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
     }
 
     /**
@@ -73,7 +104,7 @@ class Currency
      *
      * @param string $region
      *
-     * @return Currency
+     * @return Uom
      */
     public function setRegion($region)
     {
@@ -97,7 +128,7 @@ class Currency
      *
      * @param boolean $isdefault
      *
-     * @return Currency
+     * @return Uom
      */
     public function setIsdefault($isdefault)
     {

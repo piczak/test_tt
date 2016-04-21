@@ -2,86 +2,78 @@
 
 namespace AppBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Product;
 
 /**
+ * Model
+ *
+ * @ORM\Table(name="model", indexes={@ORM\Index(name="product_id", columns={"product_id"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity
- * @ORM\Table(name="model", options={"collate":"utf8_unicode_ci", "charset":"utf8", "engine":"InnoDB"})
  */
 class Model
 {
     /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-    
-    /**
      * @var string
-     * 
-     * @ORM\Column(type="string", length=255, nullable=false, options={"collation":"utf8_unicode_ci"})
+     *
+     * @ORM\Column(name="model", type="string", length=255, nullable=false)
      */
-    protected $model;
+    private $model;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(type="string", length=255, nullable=false, options={"collation":"utf8_unicode_ci"})
+     *
+     * @ORM\Column(name="url_name", type="string", length=255, nullable=true)
      */
-    protected $url_name;
-    
-    /**
-     * @var int
-     * 
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="models")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", columnDefinition="INT NOT NULL AFTER `url_name`")
-     */
-    protected $product;
-    
+    private $urlName;
+
     /**
      * @var boolean
-     * 
-     * @ORM\Column(type="boolean", length=4, nullable=true)
-     */
-    protected $isActive;
-    
-    /**
-     * @var int
-     * 
-     * @ORM\Column(type="integer", length=11, nullable=true)
-     */
-    protected $orderKey;
-
-    /**
-     * @var \DateTime $createdAt
-     * 
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $createdAt = 'CURRENT_TIMESTAMP';
-    
-    /**
-     * @var \DateTime $updatedAt
-     * 
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $updatedAt = 'CURRENT_TIMESTAMP';
-
-    /**
-     * Get id
      *
-     * @return integer
+     * @ORM\Column(name="isActive", type="boolean", nullable=true)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $isactive;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="orderKey", type="integer", nullable=true)
+     */
+    private $orderkey;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
+     */
+    private $createdat;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=false)
+     */
+    private $updatedat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Product
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * })
+     */
+    private $product;
+
+
 
     /**
      * Set model
@@ -116,7 +108,7 @@ class Model
      */
     public function setUrlName($urlName)
     {
-        $this->url_name = $urlName;
+        $this->urlName = $urlName;
 
         return $this;
     }
@@ -128,103 +120,113 @@ class Model
      */
     public function getUrlName()
     {
-        return $this->url_name;
+        return $this->urlName;
     }
 
     /**
-     * Set isActive
+     * Set isactive
      *
-     * @param boolean $isActive
+     * @param boolean $isactive
      *
      * @return Model
      */
-    public function setIsActive($isActive)
+    public function setIsactive($isactive)
     {
-        $this->isActive = $isActive;
+        $this->isactive = $isactive;
 
         return $this;
     }
 
     /**
-     * Get isActive
+     * Get isactive
      *
      * @return boolean
      */
-    public function getIsActive()
+    public function getIsactive()
     {
-        return $this->isActive;
+        return $this->isactive;
     }
 
     /**
-     * Set orderKey
+     * Set orderkey
      *
-     * @param integer $orderKey
+     * @param integer $orderkey
      *
      * @return Model
      */
-    public function setOrderKey($orderKey)
+    public function setOrderkey($orderkey)
     {
-        $this->orderKey = $orderKey;
+        $this->orderkey = $orderkey;
 
         return $this;
     }
 
     /**
-     * Get orderKey
+     * Get orderkey
      *
      * @return integer
      */
-    public function getOrderKey()
+    public function getOrderkey()
     {
-        return $this->orderKey;
+        return $this->orderkey;
     }
 
     /**
-     * Set createdAt
+     * Set createdat
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime $createdat
      *
      * @return Model
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedat($createdat)
     {
-        $this->createdAt = $createdAt;
+        $this->createdat = $createdat;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get createdat
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedat()
     {
-        return $this->createdAt;
+        return $this->createdat;
     }
 
     /**
-     * Set updatedAt
+     * Set updatedat
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime $updatedat
      *
      * @return Model
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedat($updatedat)
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedat = $updatedat;
 
         return $this;
     }
 
     /**
-     * Get updatedAt
+     * Get updatedat
      *
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getUpdatedat()
     {
-        return $this->updatedAt;
+        return $this->updatedat;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -234,7 +236,7 @@ class Model
      *
      * @return Model
      */
-    public function setProduct(\AppBundle\Entity\Product $product)
+    public function setProduct(\AppBundle\Entity\Product $product = null)
     {
         $this->product = $product;
 

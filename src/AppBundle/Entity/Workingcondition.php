@@ -5,40 +5,33 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * Workingcondition
  *
- * @ORM\Table(name="product", indexes={@ORM\Index(name="id", columns={"id"})})
+ * @ORM\Table(name="workingcondition")
  * @ORM\Entity
  */
-class Product
+class Workingcondition
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="product", type="string", length=255, nullable=false)
+     * @ORM\Column(name="workingCondition", type="string", length=255, nullable=false)
      */
-    private $product;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url_name", type="string", length=255, nullable=true)
-     */
-    private $urlName;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="isActive", type="boolean", nullable=false)
-     */
-    private $isactive;
+    private $workingcondition;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="orderKey", type="integer", nullable=true)
+     * @ORM\Column(name="multiplier", type="integer", nullable=false)
      */
-    private $orderkey;
+    private $multiplier;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isDefault", type="boolean", nullable=true)
+     */
+    private $isdefault;
 
     /**
      * @var \DateTime
@@ -66,99 +59,75 @@ class Product
 
 
     /**
-     * Set product
+     * Set workingcondition
      *
-     * @param string $product
+     * @param string $workingcondition
      *
-     * @return Product
+     * @return Workingcondition
      */
-    public function setProduct($product)
+    public function setWorkingcondition($workingcondition)
     {
-        $this->product = $product;
+        $this->workingcondition = $workingcondition;
 
         return $this;
     }
 
     /**
-     * Get product
+     * Get workingcondition
      *
      * @return string
      */
-    public function getProduct()
+    public function getWorkingcondition()
     {
-        return $this->product;
+        return $this->workingcondition;
     }
 
     /**
-     * Set urlName
+     * Set multiplier
      *
-     * @param string $urlName
+     * @param integer $multiplier
      *
-     * @return Product
+     * @return Workingcondition
      */
-    public function setUrlName($urlName)
+    public function setMultiplier($multiplier)
     {
-        $this->urlName = $urlName;
+        $this->multiplier = $multiplier;
 
         return $this;
     }
 
     /**
-     * Get urlName
-     *
-     * @return string
-     */
-    public function getUrlName()
-    {
-        return $this->urlName;
-    }
-
-    /**
-     * Set isactive
-     *
-     * @param boolean $isactive
-     *
-     * @return Product
-     */
-    public function setIsactive($isactive)
-    {
-        $this->isactive = $isactive;
-
-        return $this;
-    }
-
-    /**
-     * Get isactive
-     *
-     * @return boolean
-     */
-    public function getIsactive()
-    {
-        return $this->isactive;
-    }
-
-    /**
-     * Set orderkey
-     *
-     * @param integer $orderkey
-     *
-     * @return Product
-     */
-    public function setOrderkey($orderkey)
-    {
-        $this->orderkey = $orderkey;
-
-        return $this;
-    }
-
-    /**
-     * Get orderkey
+     * Get multiplier
      *
      * @return integer
      */
-    public function getOrderkey()
+    public function getMultiplier()
     {
-        return $this->orderkey;
+        return $this->multiplier;
+    }
+
+    /**
+     * Set isdefault
+     *
+     * @param boolean $isdefault
+     *
+     * @return Workingcondition
+     */
+    public function setIsdefault($isdefault)
+    {
+        $this->isdefault = $isdefault;
+
+        return $this;
+    }
+
+    /**
+     * Get isdefault
+     *
+     * @return boolean
+     */
+    public function getIsdefault()
+    {
+        return $this->isdefault;
     }
 
     /**
@@ -166,7 +135,7 @@ class Product
      *
      * @param \DateTime $createdat
      *
-     * @return Product
+     * @return Workingcondition
      */
     public function setCreatedat($createdat)
     {
@@ -190,7 +159,7 @@ class Product
      *
      * @param \DateTime $updatedat
      *
-     * @return Product
+     * @return Workingcondition
      */
     public function setUpdatedat($updatedat)
     {
