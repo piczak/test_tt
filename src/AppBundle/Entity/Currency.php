@@ -31,7 +31,7 @@ class Currency
      *
      * @ORM\Column(name="isDefault", type="boolean", nullable=false)
      */
-    private $isdefault;
+    private $isDefault;
 
     /**
      * @var integer
@@ -42,13 +42,10 @@ class Currency
      */
     private $id;
 
-
-
     /**
      * Set currency
      *
      * @param string $currency
-     *
      * @return Currency
      */
     public function setCurrency($currency)
@@ -61,7 +58,7 @@ class Currency
     /**
      * Get currency
      *
-     * @return string
+     * @return string 
      */
     public function getCurrency()
     {
@@ -72,7 +69,6 @@ class Currency
      * Set region
      *
      * @param string $region
-     *
      * @return Currency
      */
     public function setRegion($region)
@@ -85,7 +81,7 @@ class Currency
     /**
      * Get region
      *
-     * @return string
+     * @return string 
      */
     public function getRegion()
     {
@@ -93,33 +89,32 @@ class Currency
     }
 
     /**
-     * Set isdefault
+     * Set isDefault
      *
-     * @param boolean $isdefault
-     *
+     * @param boolean $isDefault
      * @return Currency
      */
-    public function setIsdefault($isdefault)
+    public function setIsDefault($isDefault)
     {
-        $this->isdefault = $isdefault;
+        $this->isDefault = $isDefault;
 
         return $this;
     }
 
     /**
-     * Get isdefault
+     * Get isDefault
      *
-     * @return boolean
+     * @return boolean 
      */
-    public function getIsdefault()
+    public function getIsDefault()
     {
-        return $this->isdefault;
+        return $this->isDefault;
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {

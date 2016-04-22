@@ -1,11 +1,110 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_nav.html.twig' %}
 
-{% block body %}
-    <div id="wrapper">
-        <div id="container">
-        
-            test
+{% block title %} - Calculator Settings{% endblock %}
 
+{% block content %}
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="well no-margin">
+                <div class="col-xs-4">
+                    <p class="pull-right">Working condition:</p>
+                </div>
+
+                <div class="col-xs-4">
+                    {{ dump(workingcondition) }}
+                    {% for element in workingcondition %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }})</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-xs-2">
+                    <button class="btn">Modify</button>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <hr class="style18 margin-bottom-10">
+
+            <div class="well no-margin">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <p class="text-center"><strong>Fuel Price:</strong></p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <p class="text-center"><strong>$US</strong></p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <p class="text-center"><strong>$CAN</strong></p>
+                                </div>
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="col-xs-4">
+                                <div class="row">
+                                    <p class="text-center"><i>&emsp; per gallon</i></p>
+                                </div>
+                            </div>
+                            {{dump(fuel)}}
+                            {% for element in fuel %}
+                            <div class="col-xs-4">
+                                <div class="row">
+
+                                    {{dump(element)}}
+
+                                    <p class="text-center"></p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-xs-2">
+                        <button class="btn">Modify</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <hr class="style18">
+
+            <div class="well no-margin">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p class="pull-right">DEF % rate:</p>
+                    </div>
+
+                    <div class="col-xs-4">
+                        5%
+                    </div>
+
+                    <div class="col-xs-2">
+                        <button class="btn">Modify</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <hr class="style18">
         </div>
     </div>
 {% endblock %}

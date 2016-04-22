@@ -22,60 +22,38 @@ class Fuel
     private $id;
     
     /**
-     * @var decimal
-     * 
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     * @ORM\OneToOne(targetEntity="Currency")
+     * @ORM\JoinColumn(name="currencyId", referencedColumnName="id")
      */
-    protected $fuelPriceUS_Gallon;
+    private $currencyId;
     
     /**
      * @var decimal
      * 
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
      */
-    protected $fuelPriceUS_Liter;
+    protected $fuelPriceGallon;
     
     /**
      * @var decimal
      * 
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
      */
-    protected $fuelPriceCAN_Gallon;
+    protected $fuelPriceLiter;
     
     /**
      * @var decimal
      * 
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
      */
-    protected $fuelPriceCAN_Liter;
+    protected $defPriceGallon;
     
     /**
      * @var decimal
      * 
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
      */
-    protected $defPriceUS_Gallon;
-    
-    /**
-     * @var decimal
-     * 
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
-     */
-    protected $defPriceUS_Liter;
-    
-    /**
-     * @var decimal
-     * 
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
-     */
-    protected $defPriceCAN_Gallon;
-    
-    /**
-     * @var decimal
-     * 
-     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
-     */
-    protected $defPriceCAN_Liter;
+    protected $defPriceLiter;
     
     /**
      * @var decimal
@@ -87,7 +65,7 @@ class Fuel
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -95,202 +73,101 @@ class Fuel
     }
 
     /**
-     * Set fuelPriceUSGallon
+     * Set fuelPriceGallon
      *
-     * @param string $fuelPriceUSGallon
-     *
+     * @param string $fuelPriceGallon
      * @return Fuel
      */
-    public function setFuelPriceUSGallon($fuelPriceUSGallon)
+    public function setFuelPriceGallon($fuelPriceGallon)
     {
-        $this->fuelPriceUS_Gallon = $fuelPriceUSGallon;
+        $this->fuelPriceGallon = $fuelPriceGallon;
 
         return $this;
     }
 
     /**
-     * Get fuelPriceUSGallon
+     * Get fuelPriceGallon
      *
-     * @return string
+     * @return string 
      */
-    public function getFuelPriceUSGallon()
+    public function getFuelPriceGallon()
     {
-        return $this->fuelPriceUS_Gallon;
+        return $this->fuelPriceGallon;
     }
 
     /**
-     * Set fuelPriceUSLiter
+     * Set fuelPriceLiter
      *
-     * @param string $fuelPriceUSLiter
-     *
+     * @param string $fuelPriceLiter
      * @return Fuel
      */
-    public function setFuelPriceUSLiter($fuelPriceUSLiter)
+    public function setFuelPriceLiter($fuelPriceLiter)
     {
-        $this->fuelPriceUS_Liter = $fuelPriceUSLiter;
+        $this->fuelPriceLiter = $fuelPriceLiter;
 
         return $this;
     }
 
     /**
-     * Get fuelPriceUSLiter
+     * Get fuelPriceLiter
      *
-     * @return string
+     * @return string 
      */
-    public function getFuelPriceUSLiter()
+    public function getFuelPriceLiter()
     {
-        return $this->fuelPriceUS_Liter;
+        return $this->fuelPriceLiter;
     }
 
     /**
-     * Set fuelPriceCANGallon
+     * Set defPriceGallon
      *
-     * @param string $fuelPriceCANGallon
-     *
+     * @param string $defPriceGallon
      * @return Fuel
      */
-    public function setFuelPriceCANGallon($fuelPriceCANGallon)
+    public function setDefPriceGallon($defPriceGallon)
     {
-        $this->fuelPriceCAN_Gallon = $fuelPriceCANGallon;
+        $this->defPriceGallon = $defPriceGallon;
 
         return $this;
     }
 
     /**
-     * Get fuelPriceCANGallon
+     * Get defPriceGallon
      *
-     * @return string
+     * @return string 
      */
-    public function getFuelPriceCANGallon()
+    public function getDefPriceGallon()
     {
-        return $this->fuelPriceCAN_Gallon;
+        return $this->defPriceGallon;
     }
 
     /**
-     * Set fuelPriceCANLiter
+     * Set defPriceLiter
      *
-     * @param string $fuelPriceCANLiter
-     *
+     * @param string $defPriceLiter
      * @return Fuel
      */
-    public function setFuelPriceCANLiter($fuelPriceCANLiter)
+    public function setDefPriceLiter($defPriceLiter)
     {
-        $this->fuelPriceCAN_Liter = $fuelPriceCANLiter;
+        $this->defPriceLiter = $defPriceLiter;
 
         return $this;
     }
 
     /**
-     * Get fuelPriceCANLiter
+     * Get defPriceLiter
      *
-     * @return string
+     * @return string 
      */
-    public function getFuelPriceCANLiter()
+    public function getDefPriceLiter()
     {
-        return $this->fuelPriceCAN_Liter;
-    }
-
-    /**
-     * Set defPriceUSGallon
-     *
-     * @param string $defPriceUSGallon
-     *
-     * @return Fuel
-     */
-    public function setDefPriceUSGallon($defPriceUSGallon)
-    {
-        $this->defPriceUS_Gallon = $defPriceUSGallon;
-
-        return $this;
-    }
-
-    /**
-     * Get defPriceUSGallon
-     *
-     * @return string
-     */
-    public function getDefPriceUSGallon()
-    {
-        return $this->defPriceUS_Gallon;
-    }
-
-    /**
-     * Set defPriceUSLiter
-     *
-     * @param string $defPriceUSLiter
-     *
-     * @return Fuel
-     */
-    public function setDefPriceUSLiter($defPriceUSLiter)
-    {
-        $this->defPriceUS_Liter = $defPriceUSLiter;
-
-        return $this;
-    }
-
-    /**
-     * Get defPriceUSLiter
-     *
-     * @return string
-     */
-    public function getDefPriceUSLiter()
-    {
-        return $this->defPriceUS_Liter;
-    }
-
-    /**
-     * Set defPriceCANGallon
-     *
-     * @param string $defPriceCANGallon
-     *
-     * @return Fuel
-     */
-    public function setDefPriceCANGallon($defPriceCANGallon)
-    {
-        $this->defPriceCAN_Gallon = $defPriceCANGallon;
-
-        return $this;
-    }
-
-    /**
-     * Get defPriceCANGallon
-     *
-     * @return string
-     */
-    public function getDefPriceCANGallon()
-    {
-        return $this->defPriceCAN_Gallon;
-    }
-
-    /**
-     * Set defPriceCANLiter
-     *
-     * @param string $defPriceCANLiter
-     *
-     * @return Fuel
-     */
-    public function setDefPriceCANLiter($defPriceCANLiter)
-    {
-        $this->defPriceCAN_Liter = $defPriceCANLiter;
-
-        return $this;
-    }
-
-    /**
-     * Get defPriceCANLiter
-     *
-     * @return string
-     */
-    public function getDefPriceCANLiter()
-    {
-        return $this->defPriceCAN_Liter;
+        return $this->defPriceLiter;
     }
 
     /**
      * Set defPercentageRate
      *
      * @param string $defPercentageRate
-     *
      * @return Fuel
      */
     public function setDefPercentageRate($defPercentageRate)
@@ -303,10 +180,33 @@ class Fuel
     /**
      * Get defPercentageRate
      *
-     * @return string
+     * @return string 
      */
     public function getDefPercentageRate()
     {
         return $this->defPercentageRate;
+    }
+
+    /**
+     * Set currencyId
+     *
+     * @param \AppBundle\Entity\Currency $currencyId
+     * @return Fuel
+     */
+    public function setCurrencyId(\AppBundle\Entity\Currency $currencyId = null)
+    {
+        $this->currencyId = $currencyId;
+
+        return $this;
+    }
+
+    /**
+     * Get currencyId
+     *
+     * @return \AppBundle\Entity\Currency 
+     */
+    public function getCurrencyId()
+    {
+        return $this->currencyId;
     }
 }

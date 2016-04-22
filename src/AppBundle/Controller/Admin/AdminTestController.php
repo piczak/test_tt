@@ -8,6 +8,17 @@ class AdminTestController extends AbstractController
 {
     public function indexAction()
     {
-        return $this->render(':Admin:admin_test.html.twig');
+        $workingcondition = $this->getDoctrine()
+            ->getRepository('AppBundle:Workingcondition')
+            ->findAll();
+        
+        $fuel = $this->getDoctrine()
+            ->getRepository('AppBundle:Fuel')
+            ->findAll();
+        
+        //dump($fuel);
+        //die();
+        
+        return $this->render(':Admin:admin_test.html.twig', array( 'workingcondition' => $workingcondition, 'fuel' => $fuel ));
     }
 }

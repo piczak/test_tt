@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}TCO{% endblock %}</title>
+        <title>TCO{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         {% block stylesheets %}
@@ -12,9 +12,12 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
 
-        <!-- own css -->
+        <!-- general css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fos.css') }}">
+        
+        <!-- admin css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin/main.css') }}">
         
         {% endblock %}
 
@@ -25,9 +28,11 @@
     {% block body %}{% endblock %}
     
     {% block javascripts %}
-        <!-- Mainly scripts -->
+        <!-- vendor scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-2.1.1.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+        
+        <!-- general scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 
     {% endblock %}
