@@ -1086,32 +1086,6 @@ INSERT INTO `sqthours_costs` VALUES ('755', '145', 'Wheel Loaders', '921F Tier 4
 INSERT INTO `sqthours_costs` VALUES ('756', '145', 'Wheel Loaders', '921F Tier 4B (Final)', 'R4000', '4000', '10.00', '40.50', '30.50', '456.54', '621.18', '1307.44', '1783.32', '850.90', '1162.14', '2016-04-20 10:11:53', '2016-04-20 10:11:53');
 
 -- ----------------------------
--- Table structure for sqtparts
--- ----------------------------
-DROP TABLE IF EXISTS `sqtparts`;
-CREATE TABLE `sqtparts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `model_tier_id` int(11) DEFAULT NULL,
-  `sqtHours_Costs_id` int(11) NOT NULL,
-  `product` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `model` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `serviceInterval` text COLLATE utf8_unicode_ci NOT NULL,
-  `workDescription` text COLLATE utf8_unicode_ci NOT NULL,
-  `partNumber` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `partDescription` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT '0',
-  `dealerNet_USD` decimal(19,4) NOT NULL DEFAULT '0.0000',
-  `dealerNet_CAN` decimal(19,4) NOT NULL DEFAULT '0.0000',
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `fk_sqtparts_modelTier_id` (`model_tier_id`),
-  KEY `sqtLabor_id` (`sqtHours_Costs_id`),
-  CONSTRAINT `fk_sqtparts_modelTier_id` FOREIGN KEY (`model_tier_id`) REFERENCES `model_tier` (`id`),
-  CONSTRAINT `fk_sqtparts_sqtHours_Costs_id` FOREIGN KEY (`sqtHours_Costs_id`) REFERENCES `sqthours_costs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6716 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
 -- Records of sqtparts
 -- ----------------------------
 INSERT INTO `sqtparts` VALUES ('1', '1', '1', 'Compact Track Loaders', 'TR270 Tier 4A', 'R0250', 'LUBE CHASSIS(Fluid Type:NLGI#2 LITHIUM GREAS)', '132096A1', 'GREASE', '2', '0.0000', '0.0000', '2016-04-05 11:39:53', '2016-04-05 11:39:53');
