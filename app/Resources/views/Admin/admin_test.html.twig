@@ -6,23 +6,32 @@
     <div class="col-xs-12">
         <div class="row">
             <div class="well no-margin">
-                <div class="col-xs-4">
-                    <p class="pull-right">Working condition:</p>
-                </div>
+                <div class="row row-eq-height">   
+                    <div class="col-xs-6 col-sm-4">
+                        <p class="pull-right">Working condition:</p>
+                    </div>
 
-                <div class="col-xs-4">
-                    {{ dump(workingcondition) }}
-                    {% for element in workingcondition %}
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }})</p>
+                    <div class="col-xs-6 col-sm-4">
+                        
+                        {% for element in workingcondition %}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }})</p>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                        
+                    </div>
 
-                <div class="col-xs-2">
-                    <button class="btn">Modify</button>
+                    <div class="col-sm-4 text-center position-relative hidden-xs">
+                        <button class="btn center-block position-absolute">Modify</button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12 text-center visible-xs ">
+                        <button class="btn col-xs-12 center-block">Modify</button>
+                    </div>
                 </div>
                 
                 <div class="clearfix"></div>
@@ -33,53 +42,103 @@
             <hr class="style18 margin-bottom-10">
 
             <div class="well no-margin">
-                <div class="row">
-                    <div class="col-xs-8">
+                <div class="row row-eq-height">
+                    <div class="col-xs-12 col-sm-8 tables">
                         <div class="row">
-                            <div class="col-xs-4">
-                                <div class="row">
-                                    <p class="text-center"><strong>Fuel Price:</strong></p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-xs-4">
-                                <div class="row">
-                                    <p class="text-center"><strong>$US</strong></p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-xs-4">
-                                <div class="row">
-                                    <p class="text-center"><strong>$CAN</strong></p>
-                                </div>
-                            </div>
-                            
-                            <div class="clearfix"></div>
-                            
-                            <div class="col-xs-4">
-                                <div class="row">
-                                    <p class="text-center"><i>&emsp; per gallon</i></p>
-                                </div>
-                            </div>
-                            {{dump(fuel)}}
-                            {% for element in fuel %}
-                            <div class="col-xs-4">
-                                <div class="row">
+                            <div class="col-xs-12">
+                                
+                                <p><strong>Fuel Prices</strong><p>
+                                    
+                                {# start table fuel price #}
+                                <div class="table-responsive border-black">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-4"><strong>Currency</strong></th>
+                                                <th class="col-xs-4"><strong>Price/liter</strong></th>
+                                                <th class="col-xs-4"><strong>Price/gallon</strong></th>
+                                            </tr>
+                                        </thead>
 
-                                    {{dump(element)}}
+                                        {% for element in currency %}
 
-                                    <p class="text-center"></p>
+                                        <tbody>
+                                            <td>
+                                                ${{ element.currency }}
+                                            </td>
+
+                                            <td>
+                                                {{ element.fuelId.fuelPriceGallon }}
+                                            </td>
+
+                                            <td>
+                                                {{ element.fuelId.fuelPriceLiter }}
+                                            </td>
+                                        </tbody>
+
+                                        {% endfor %}
+
+                                    </table>
                                 </div>
+                                {# end table fuel price #}
+
                             </div>
-                            {% endfor %}
-                            
+                        </div>
+
+                        <div class="row margin-top-30">
+                            <div class="col-xs-12">
+                                
+                                <p><strong>DEF Price</strong><p>
+                                    
+                                {# start table def price #}
+                                <div class="table-responsive border-black">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-xs-4"><strong>Currency</strong></th>
+                                                <th class="col-xs-4"><strong>Price/gallon</strong></th>
+                                                <th class="col-xs-4"><strong>Price/litter</strong></th>
+                                            </tr>
+                                        </thead>
+
+                                        {% for element in currency %}
+
+                                        <tbody>
+                                            <td>
+                                                ${{ element.currency }}
+                                            </td>
+
+                                            <td>
+                                                {{ element.fuelId.defPriceGallon }}
+                                            </td>
+
+                                            <td>
+                                                {{ element.fuelId.defPriceLiter }}
+                                            </td>
+                                        </tbody>
+
+                                        {% endfor %}
+
+                                    </table>
+                                </div>
+                                {# end table def price #}
+
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-xs-2">
-                        <button class="btn">Modify</button>
+                                
+                    <div class="col-sm-4 text-center position-relative hidden-xs">
+                        <button class="btn center-block position-absolute">Modify</button>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-xs-12 text-center visible-xs ">
+                        <button class="btn col-xs-12 center-block">Modify</button>
+                    </div>
+                </div>
+                                
+                <div class="clearfix"></div>
             </div>
 
             <div class="clearfix"></div>
@@ -87,19 +146,27 @@
             <hr class="style18">
 
             <div class="well no-margin">
-                <div class="row">
-                    <div class="col-xs-4">
+                <div class="row row-eq-height">
+                    <div class="col-xs-6 col-sm-4 text-center">
                         <p class="pull-right">DEF % rate:</p>
                     </div>
 
-                    <div class="col-xs-4">
+                    <div class="col-xs-6 col-sm-4">
                         5%
                     </div>
 
-                    <div class="col-xs-2">
-                        <button class="btn">Modify</button>
+                    <div class="col-sm-4 text-center position-relative hidden-xs">
+                        <button class="btn center-block position-absolute">Modify</button>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-xs-12 text-center visible-xs ">
+                        <button class="btn col-xs-12 center-block">Modify</button>
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
             </div>
 
             <div class="clearfix"></div>

@@ -22,7 +22,7 @@ class Fuel
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Currency")
+     * @ORM\OneToOne(targetEntity="Currency", inversedBy="fuelId" )
      * @ORM\JoinColumn(name="currencyId", referencedColumnName="id")
      */
     private $currencyId;

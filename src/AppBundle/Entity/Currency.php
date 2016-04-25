@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Fuel;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,12 @@ class Currency
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Fuel", mappedBy="currencyId")
+     */
+    private $fuelId;
+
 
     /**
      * Set currency
@@ -119,5 +126,28 @@ class Currency
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set fuelId
+     *
+     * @param \AppBundle\Entity\Fuel $fuelId
+     * @return Currency
+     */
+    public function setFuelId(\AppBundle\Entity\Fuel $fuelId = null)
+    {
+        $this->fuelId = $fuelId;
+
+        return $this;
+    }
+
+    /**
+     * Get fuelId
+     *
+     * @return \AppBundle\Entity\Fuel 
+     */
+    public function getFuelId()
+    {
+        return $this->fuelId;
     }
 }

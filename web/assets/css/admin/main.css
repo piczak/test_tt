@@ -29,7 +29,31 @@
 }
 .admin .workingcondition {
 }
-
+.tables .table-responsive table tbody td, .admin .tables .table-responsive table thead tr th{
+    text-align:center;
+}
+.admin .border-black {
+    border:1px solid #999;
+    border-radius:5px;
+}
+.admin .padding-side-1 {
+    margin-left:-13px;
+    margin-right:-13px;
+}
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-direction: row;
+}
+.admin .position-relative {
+    position:relative;
+}
+.admin .position-absolute {
+    position:absolute;
+    bottom:0px
+}
 .admin hr.style19 { 
     height: 30px; 
     border-style: solid; 
