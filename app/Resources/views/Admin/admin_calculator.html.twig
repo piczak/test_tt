@@ -131,7 +131,7 @@
                         <button class="btn center-block position-absolute">Modify</button>
                     </div>
                 </div>
-                
+                                
                 <div class="row">
                     <div class="col-xs-12 text-center visible-xs ">
                         <button class="btn col-xs-12 center-block">Modify</button>
@@ -144,15 +144,19 @@
             <div class="clearfix"></div>
 
             <hr class="style18">
-
+            
             <div class="well no-margin">
                 <div class="row row-eq-height">
                     <div class="col-xs-6 col-sm-4 text-center">
                         <p class="pull-right">DEF % rate:</p>
                     </div>
-
+                    
                     <div class="col-xs-6 col-sm-4">
-                        5%
+                        {% for element in currency %}
+                            {% if element.isDefault == 'true' %}
+                                <strong>{{ element.fuelId.defPercentageRate }} %</strong>
+                            {% endif %}
+                        {% endfor %}
                     </div>
 
                     <div class="col-sm-4 text-center position-relative hidden-xs">

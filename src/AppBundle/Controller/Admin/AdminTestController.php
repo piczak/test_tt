@@ -12,13 +12,10 @@ class AdminTestController extends AbstractController
             ->getRepository('AppBundle:Workingcondition')
             ->findAll();
         
-        $fuel = $this->getDoctrine()
+        $currency = $this->getDoctrine()
             ->getRepository('AppBundle:Currency')
             ->findAll();
         
-        //dump($fuel);
-        //die();
-        
-        return $this->render(':Admin:admin_test.html.twig', array( 'workingcondition' => $workingcondition, 'currency' => $fuel ));
+        return $this->render(':Admin:admin_calculator.html.twig', array( 'workingcondition' => $workingcondition, 'currency' => $currency ));
     }
 }

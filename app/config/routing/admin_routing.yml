@@ -1,2 +1,2 @@
-container:
-    resource: "admin/test_admin_routing.yml"
+calculator:
+    resource: "admin/calculator_admin_routing.yml"
