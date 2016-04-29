@@ -2,20 +2,51 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\Task;
+use AppBundle\Form\TaskType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class TestController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        $task = new Task();
+        
+        $work = $this->getDoctrine()->getRepository('AppBundle:Workingcondition')->findAll();
+        
+        foreach($work as $value){
+            $task->getForms()->add($value);
+        }
+
+        $form = $this->createForm(TaskType::class, $task, array(
+            'action' => $this->generateUrl('test')
+        ));
+
+        $form->handleRequest($request);
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        
+        if ($form->isValid()) {
+            foreach ($form->getData() as $value) {
+            $id = $value->getId();
+            $workingcondition = $value->get('workingcondition')->getData();
+               
+            $work_cond = $em->getRepository('AppBundle:Workingcondition')->findById($id);
+
+            $work_cond['0']->setMultiplier($form->get('multiplier')->getData());
+            $work_cond['0']->setIsdefault($form->get('isdefault')->getData());
+
+            $em->flush();
+
+            }
+        }
+        $em->flush();
+
+
+        return $this->render('test.html.twig', array('array' => $value,
+            'form' => $form->createView(),
         ));
     }
 }

@@ -18,3 +18,7 @@ register:
 
 logout:
   path: /logout
+
+test:
+  path: /test
+  defaults: {_controller: AppBundle:Test:index}

@@ -1,0 +1,15 @@
+
+
+{{ form_start(form) }}
+    {# render the task's only field: description #}
+    <h3>Tags</h3>
+    <ul class="tags">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for tag in form.forms %}
+                {{ tag.vars.data.workingcondition }}
+            <li>{{ form_row(tag.multiplier) }}</li>
+            <li>{{ form_row(tag.isDefault, { 'empty_value': 'Choose an option' }) }}</li>
+        {% endfor %}
+    </ul>
+        
+{{ form_end(form) }}

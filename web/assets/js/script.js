@@ -1,5 +1,23 @@
 $(document).ready(function () {
 
+
+    $('input[type="radio"]').on('click', function () {
+        var form = $(this).closest('form').attr('id');
+        $('#'+form).find('input:checked').each(function () {
+            $(this).prop('checked', false);
+        });
+        $(this).prop('checked', true);
+    });
+/*
+    $('input[type="radio"]').on('click', function () {
+        var form = $(this).closest('form').attr('id');
+        $('input[type="radio"]').each(function () {
+            $(this).prop('checked', false);
+        });
+        $(this).prop('checked', true);
+    });
+*/
+
     function centerObject() {
         var windowHeight = $(window).height();
         var elementHeight = $('.screen-center').height();

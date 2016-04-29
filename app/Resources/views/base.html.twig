@@ -11,6 +11,7 @@
         <!-- vendor css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/angular.css') }}">
 
         <!-- general css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -24,17 +25,33 @@
     </head>
     
     <body>
-        
+        <div id="msg">
+            <div class="container font-size-24">
+
+                <p>Loading...</p>
+
+            </div>
+        </div>
+        <div id="body" style="display:none;">
     {% block body %}{% endblock %}
-    
+        </div>
     {% block javascripts %}
         <!-- vendor scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-2.1.1.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular-animate.js') }}"></script>
         
         <!-- general scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
-
+        
+        <script>
+            $(document).ready(function() {
+                $('#body').show();
+                $('#msg').hide();
+            });
+        </script>
+        
     {% endblock %}
     
     </body>
