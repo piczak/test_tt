@@ -13,7 +13,9 @@ class FuelType extends AbstractType
     {
         $builder
             ->add('fuelPriceGallon', null, array('label' => false))
-            ->add('fuelPriceLiter', null, array('label' => false));
+            ->add('fuelPriceLiter', null, array('label' => false))
+            ->add('defPriceGallon', null, array('label' => false))
+            ->add('defPriceLiter', null, array('label' => false));
     }
     
     public function configureOptions(OptionsResolver $resolver)

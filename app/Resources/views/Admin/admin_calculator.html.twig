@@ -148,21 +148,21 @@
 
                                         {# start table fuel price #}
                                         <div class="table-responsive border-black">
-                                            <table class="table no-margin">
+                                            <table class="table no-margin tables">
                                                 <thead>
                                                     <tr>
                                                         <th class="col-xs-4"><strong>Currency</strong></th>
-                                                        <th class="col-xs-4"><strong>Price/liter</strong></th>
                                                         <th class="col-xs-4"><strong>Price/gallon</strong></th>
+                                                        <th class="col-xs-4"><strong>Price/liter</strong></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    {{ form_start(formPrice, {'attr': {'id': 'task1'}}) }}
-
+{# form fuel price/def start #}
+                                                {{ form_start(formPrice, {'attr': {'id': 'task1'}}) }}
+ 
                                                     {% for form in formPrice.forms %}
-
-                                                    <td>
-                                                        $
+                                                <tbody>
+                                                    <td style="padding:10px;">
+                                                        ${{ form.vars.value.currencyId.currency }}
                                                     </td>
 
                                                     <td>
@@ -170,13 +170,11 @@
                                                     </td>
 
                                                     <td>
-                                                        {{ form_row(form.fuelPriceGallon) }}
+                                                        {{ form_row(form.fuelPriceLiter) }}
                                                     </td>
-
-                                                    {% endfor %}                  
-
-                                                    {{ form_end(form) }}
                                                 </tbody>
+                                                
+                                                    {% endfor %}                  
 
                                             </table>
                                         </div>
@@ -203,24 +201,26 @@
                                                     </tr>
                                                 </thead>
 
-                                                {% for element in currency %}
-
+ 
+                                                    {% for form in formPrice.forms %}
                                                 <tbody>
-                                                    <td>
-                                                        ${{ element.currency }}
+                                                    <td style="padding:10px;">
+                                                        ${{ form.vars.value.currencyId.currency }}
                                                     </td>
 
                                                     <td>
-                                                        {{ element.fuelId.defPriceGallon }}
+                                                        {{ form_row(form.defPriceGallon) }}
                                                     </td>
 
                                                     <td>
-                                                        {{ element.fuelId.defPriceLiter }}
+                                                        {{ form_row(form.defPriceLiter) }}
                                                     </td>
                                                 </tbody>
+                                                
+                                                    {% endfor %}                  
 
-                                                {% endfor %}
-
+                                                {{ form_end(form) }}
+{# form fuel/def end #}                                          
                                             </table>
                                         </div>
                                         {# end table def price #}
@@ -236,7 +236,7 @@
                                 </div>
 
                                 <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                    <button type="submit" form="task" class="col-xs-12 btn btn-success">Save</button>
+                                    <button type="submit" form="task1" class="col-xs-12 btn btn-success">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -258,15 +258,15 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="col-xs-4"><strong>Currency</strong></th>
-                                                        <th class="col-xs-4"><strong>Price/liter</strong></th>
                                                         <th class="col-xs-4"><strong>Price/gallon</strong></th>
+                                                        <th class="col-xs-4"><strong>Price/liter</strong></th>
                                                     </tr>
                                                 </thead>
 
                                                 {% for element in currency %}
 
                                                 <tbody>
-                                                    <td>
+                                                    <td style="padding:10px;">
                                                         ${{ element.currency }}
                                                     </td>
 
@@ -309,7 +309,7 @@
                                                 {% for element in currency %}
 
                                                 <tbody>
-                                                    <td>
+                                                    <td style="padding:10px;">
                                                         ${{ element.currency }}
                                                     </td>
 

@@ -64,11 +64,14 @@ class AdminTestController extends AbstractController
         if ($formPrice->isValid()) {
             foreach ($formPrice->getData() as $value) {
                 $id = $value->getId();
-
+                dump($id);
+                die();
                 $fuel1 = $em->getRepository('AppBundle:Fuel')->findById($id);
-
+                $fuel1->setFuelPriceGallon($formPrice->get('fuelPriceGallon')->getData());
+                $fuel1->setFuelPriceLiter($formPrice->get('fuelPriceLiter')->getData());
+                $fuel1->setDefPriceGallon($formPrice->get('defPriceGallon')->getData());
+                $fuel1->setDefPriceLiter($formPrice->get('defPriceLiter')->getData());
                 $em->flush();
-                
             }
         }
         
