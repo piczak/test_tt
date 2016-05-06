@@ -5,16 +5,16 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use AppBundle\Form\FuelType;
 
-class CurrencyType extends AbstractType
+class CurrencyEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('currency', null, array('label' => false))
-            ->add('region', null, array('label' => false))
             ->add('isDefault', 'radio', array('label' => false, 'required'=>false))
+            ->add('remove', CheckboxType::class, array('label' => false, 'mapped' => false, 'required'=>false))
             ->add('fuelId', new FuelType());
     }
     

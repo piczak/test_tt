@@ -44,10 +44,9 @@ class Currency
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Fuel", mappedBy="currencyId")
+     * @ORM\OneToOne(targetEntity="Fuel", mappedBy="currencyId", cascade={"persist","remove"})
      */
     private $fuelId;
-
 
     /**
      * Set currency
@@ -137,6 +136,7 @@ class Currency
     public function setFuelId(\AppBundle\Entity\Fuel $fuelId = null)
     {
         $this->fuelId = $fuelId;
+        $fuelId->setCurrencyId($this);
 
         return $this;
     }

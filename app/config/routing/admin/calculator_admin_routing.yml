@@ -1,3 +1,0 @@
-admin_calculator_page:
-  path: /
-  defaults: {_controller: AppBundle:Admin\AdminTest:index}

@@ -1,0 +1,3 @@
+calculator_show:
+  path: /calculator
+  defaults: {_controller: AppBundle:Admin\Calculator:show}

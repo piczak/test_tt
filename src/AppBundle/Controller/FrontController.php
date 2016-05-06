@@ -13,7 +13,7 @@ class FrontController extends AbstractController
         
         $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('ROLE_ADMIN')) {
-            return $this->redirect($this->generateUrl('admin_calculator_page'));
+            return $this->redirect($this->generateUrl('calculator_show'));
         } else if ($securityContext->isGranted('ROLE_USER')) {
             return $this->redirect($this->generateUrl('user_test_page'));
         } else {

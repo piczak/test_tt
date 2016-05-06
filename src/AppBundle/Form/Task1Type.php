@@ -13,7 +13,7 @@ class Task1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('forms', CollectionType::class, array(
-            'entry_type' => FuelType::class
+            'entry_type' => CurrencyEditType::class
         ));
     }
 

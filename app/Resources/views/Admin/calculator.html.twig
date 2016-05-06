@@ -1,0 +1,36 @@
+{% extends 'Admin/admin_nav.html.twig' %}
+
+{% block title %} - Calculator Settings{% endblock %}
+
+{% block content %}
+
+    <div class="col-xs-12 calculator" ng-app="ngAnimate">
+        <div class="row">
+            
+            {# workingcondition #}
+            {% include 'Admin/Calculator/workingcondition.html.twig' %}
+            
+            <div class="clearfix"></div>
+
+            <hr class="style18">
+            
+            {# currency, fuel/def #}
+            {% include 'Admin/Calculator/currency.html.twig' %}
+
+            <div class="clearfix"></div>
+
+            <hr class="style18">
+            
+            {# def rate #}
+            {% include 'Admin/Calculator/rate.html.twig' %}
+
+            <div class="clearfix"></div>
+
+            <hr class="style18">
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

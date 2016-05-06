@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fuel
+ *
+ * @ORM\Table(name="fuel")
+ * @ORM\Entity
+ */
+class Fuel
+{
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Currency", inversedBy="fuelId" )
+     * @ORM\JoinColumn(name="currencyId", referencedColumnName="id")
+     */
+    private $currencyId;
+    
+    /**
+     * @var decimal
+     * 
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     */
+    protected $fuelPriceGallon;
+    
+    /**
+     * @var decimal
+     * 
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     */
+    protected $fuelPriceLiter;
+    
+    /**
+     * @var decimal
+     * 
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     */
+    protected $defPriceGallon;
+    
+    /**
+     * @var decimal
+     * 
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     */
+    protected $defPriceLiter;
+    
+    /**
+     * @var decimal
+     * 
+     * @ORM\Column(type="decimal", precision=5, scale=2, nullable=false)
+     */
+    protected $defPercentageRate;
+}

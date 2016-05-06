@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use AppBundle\Entity\Fuel;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Currency
+ *
+ * @ORM\Table(name="currency")
+ * @ORM\Entity
+ */
+class Currency
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="currency", type="string", length=255, nullable=false)
+     */
+    private $currency;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=255, nullable=false)
+     */
+    private $region;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isDefault", type="boolean", nullable=false)
+     */
+    private $isDefault;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Fuel", mappedBy="currencyId", cascade={"persist","remove"})
+     */
+    private $fuelId;
+}
