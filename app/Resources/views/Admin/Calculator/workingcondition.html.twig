@@ -2,130 +2,132 @@
             {# WORKINGCONDITION #}
             <div class="well no-margin">
                 <div class="col-xs-12 overlay-position workingcondition-group">
-                    
-                    {# EDIT workingcondition START #}
-                    <div class="overlay-show" ng-show="toggle1">
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            
-                            <p class="visible-xs visible-sm pull-left">Working condition:</p>
-
-                            <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-9 col-md-6">
-   
-                            {{ form_start(formWorkingcondition, {'attr': {'id': 'task'}}) }}
-
-                                {% for form in formWorkingcondition.forms %}
-                                
+                    <div class="row">
+                        {# EDIT workingcondition START #}
+                        <div class="overlay-show" ng-show="toggle1">
                             <div class="row">
-                                <span class="col-xs-3">
-                                    <p><strong>{{ form.vars.data.workingcondition }}</strong></p>
-                                </span>
+                                <div class="col-xs-12 col-sm-3 col-md-3">
 
+                                    <p class="visible-xs visible-sm pull-left">Working condition:</p>
 
-                                <span class="col-xs-3">
-                                    {{ form_row(form.multiplier) }}
-                                </span>
+                                    <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
+                                </div>
 
-                                <span class="col-xs-3">
+                                <div class="col-xs-12 col-sm-9 col-md-6">
+
+                                    {{ form_start(formWorkingcondition, {'attr': {'id': 'task'}}) }}
+
+                                        {% for form in formWorkingcondition.forms %}
+
                                     <div class="row">
-                                        <div class="pull-right">
-                                            {{ form_row(form.isDefault) }}
+                                        <span class="col-xs-3">
+                                            <p><strong>{{ form.vars.data.workingcondition }}</strong></p>
+                                        </span>
+
+
+                                        <span class="col-xs-3">
+                                            {{ form_row(form.multiplier) }}
+                                        </span>
+
+                                        <span class="col-xs-3">
+                                            <div class="row">
+                                                <div class="pull-right">
+                                                    {{ form_row(form.isDefault) }}
+                                                </div>
+                                            </div>
+                                        </span>
+
+                                        <span class="col-xs-3 pull-left">
+                                            <div class="row">
+                                                <p class="pull-left">
+                                                    default
+                                                </p>
+                                            </div>
+                                        </span>
+
+                                    </div>
+
+                                        {% endfor %}                  
+
+                                    {{ form_end(formWorkingcondition) }}
+
+                                </div>
+
+                                <div class="visible-xs visible-sm row">
+                                    <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
+                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
+                                            <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
+                                                Return
+                                            </button>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
+                                            <button type="submit" form="task" class="col-xs-12 btn btn-success">
+                                                Save
+                                            </button>
                                         </div>
                                     </div>
-                                </span>
-                                    
-                                <span class="col-xs-3 pull-left">
-                                    <div class="row">
-                                        <p class="pull-left">
-                                            default
-                                        </p>
+                                </div>
+
+                                <div class="visible-md visible-lg">
+                                    <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
+                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
+                                            <div class="row">
+                                                <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
+                                                    Return
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
+                                            <div class="row">
+                                                <button type="submit" form="task" class="col-xs-12 btn btn-success">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        {# EDIT workingcondition END #}
+
+
+                        {# DISPLAY workingcondition START #}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+
+                                <p class="visible-xs visible-sm pull-left">Working condition:</p>
+
+                                <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
 
                             </div>
 
-                                {% endfor %}                  
+                            <div class="col-xs-12 col-sm-9 col-md-6">
 
-                            {{ form_end(formWorkingcondition) }}
+                            {% for element in workingcondition %}
 
-                        </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }}) {{ element.isDefault ? 'default' }}</p>
+                                    </div>
+                                </div>
 
-                        <div class="visible-xs visible-sm row">
+                            {% endfor %}
+
+                            </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                                <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
-                                    <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
-                                        Return
+                                <div class="margin-10">
+                                    <button ng-click="toggle1 = !toggle1" class="col-xs-12 btn btn-info">
+                                        Modify
                                     </button>
                                 </div>
-
-                                <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                    <button type="submit" form="task" class="col-xs-12 btn btn-success">
-                                        Save
-                                    </button>
-                                </div>
                             </div>
                         </div>
-                        
-                        <div class="visible-md visible-lg">
-                            <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                                <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
-                                    <div class="row">
-                                        <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
-                                            Return
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                    <div class="row">
-                                        <button type="submit" form="task" class="col-xs-12 btn btn-success">
-                                            Save
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        {# DISPLAY workingcondition END #}
                     </div>
-                    {# EDIT workingcondition END #}
-                    
-                    
-                    {# DISPLAY workingcondition START #}
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            
-                            <p class="visible-xs visible-sm pull-left">Working condition:</p>
-
-                            <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
-                            
-                        </div>
-
-                        <div class="col-xs-12 col-sm-9 col-md-6">
-
-                        {% for element in workingcondition %}
-
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }}) {{ element.isDefault ? 'default' }}</p>
-                                </div>
-                            </div>
-
-                        {% endfor %}
-
-                        </div>
-                        
-                        <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                            <div class="margin-10">
-                                <button ng-click="toggle1 = !toggle1" class="col-xs-12 btn btn-info">
-                                    Modify
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    {# DISPLAY workingcondition END #}
-                        
                 </div>
                             
                 <div class="clearfix"></div>

@@ -3,7 +3,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Task
+class WorkingconditionTask
 {
     protected $forms;
 

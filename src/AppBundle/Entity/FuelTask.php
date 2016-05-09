@@ -3,7 +3,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Task1
+class FuelTask
 {
     protected $forms;
 

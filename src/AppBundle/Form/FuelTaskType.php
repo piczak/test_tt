@@ -8,19 +8,19 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class TaskType extends AbstractType
+class FuelTaskType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('forms', CollectionType::class, array(
-            'entry_type' => WorkingconditionType::class
+            'entry_type' => CurrencyEditType::class
         ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Task',
+            'data_class' => 'AppBundle\Entity\FuelTask',
         ));
     }
 }

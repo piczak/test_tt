@@ -2,16 +2,15 @@
 
 namespace AppBundle\Controller\Admin;
 
-use AppBundle\Entity\Task;
-use AppBundle\Entity\Task1;
+use AppBundle\Entity\WorkingconditionTask;
+use AppBundle\Entity\FuelTask;
 use AppBundle\Entity\Fuel;
 use AppBundle\Entity\Currency;
-use AppBundle\Form\TaskType;
-use AppBundle\Form\Task1Type;
+use AppBundle\Form\WorkingconditionTaskType;
+use AppBundle\Form\FuelTaskType;
 use AppBundle\Form\CurrencyType;
+use AppBundle\Form\RateType;
 use AppBundle\Controller\AbstractController;
-use AppBundle\Entity\Workingcondition;
-use AppBundle\Form\WorkingconditionType;
 use Symfony\Component\HttpFoundation\Request;
 
 class CalculatorController extends AbstractController
@@ -19,19 +18,24 @@ class CalculatorController extends AbstractController
     public function showAction(Request $request)
     {   
         
-        $taskWork = new Task();
+        $taskWork = new WorkingconditionTask();
         
-        $taskPrice = new Task1();
+        $taskPrice = new FuelTask();
+        
+        $currencyInsert = new Currency();
+
+        $fuelInsert = new Fuel();
         
         $em = $this->getDoctrine()->getManager();
-        
+
+        //edit working condition
         $work = $this->getDoctrine()->getRepository('AppBundle:Workingcondition')->findAll();
         
         foreach($work as $value){
             $taskWork->getForms()->add($value);
         }
 
-        $formWorkingcondition = $this->createForm(TaskType::class, $taskWork, array(
+        $formWorkingcondition = $this->createForm(WorkingconditionTaskType::class, $taskWork, array(
             'action' => $this->generateUrl('calculator_show')
         ));
 
@@ -54,33 +58,39 @@ class CalculatorController extends AbstractController
 
             }
         }
-
+        
+        //edit fuel prices/def and choosing default currency
         $price = $this->getDoctrine()->getRepository('AppBundle:Currency')->findAll();
         
         foreach($price as $value){
             $taskPrice->getForms()->add($value);
         }
         
-        $formPrice = $this->createForm(Task1Type::class, $taskPrice, array(
+        $formPrice = $this->createForm(FuelTaskType::class, $taskPrice, array(
             'action' => $this->generateUrl('calculator_show')
         ));
         
         $formPrice->handleRequest($request);
         
-//        if ($formPrice->isValid()) {
-//            dump($formPrice->getChildren());die;
-////            dump($formPrice->get('remove')->getData());die;
-//            foreach ($formPrice->getData()->getForms() as $value) {
-//                dump($value);
-//                die();
-//            }
-//            return $this->redirect($this->generateUrl('calculator_show'));
-//        }
+        //remove currency group
+        if ($formPrice->isValid()) {
+            $parameters = $request->request->all();
+            $remove = $parameters[$formPrice->getName()]['forms'];
+
+            $i = 0;
+            foreach ($formPrice->getData()->getForms() as $value) {
+
+                if(array_key_exists('remove', $remove[$i])) {
+                    $currency_price_to_remove = $em->getRepository('AppBundle:Currency')->findById($value->getId());
+                    $em->remove($currency_price_to_remove[0]);
+                    $em->flush(); 
+                }
+                $i++;
+            }
+            return $this->redirect($this->generateUrl('calculator_show'));
+        }
         
-        
-        
-        $currencyInsert = new Currency();
-        
+        //add new currency and prices
         $formCurrency = $this->createForm(CurrencyType::class, $currencyInsert, array(
             'action' => $this->generateUrl('calculator_show')
         ));
@@ -112,9 +122,7 @@ class CalculatorController extends AbstractController
             $currencyInsert->getFuelId()->setFuelPriceLiter($formCurrency->getData()->getFuelId()->getFuelPriceLiter());
             $currencyInsert->getFuelId()->setDefPriceGallon($formCurrency->getData()->getFuelId()->getDefPriceGallon());
             $currencyInsert->getFuelId()->setDefPriceLiter($formCurrency->getData()->getFuelId()->getDefPriceLiter());
-        
             $currencyInsert->getFuelId()->setDefPercentageRate($defPercentageRate);
-            
             $em->persist($currencyInsert);
             $em->flush();
             
@@ -124,24 +132,22 @@ class CalculatorController extends AbstractController
             
         }
         
-//        $def = new Fuel();
-//        
-//        $formDef = $this->createForm(new DefType(), $def, array(
-//            'action' => $this->generateUrl('calculator_show')
-//        ));
-//        
-////        if ($formDef->handleRequest($request)->isSubmitted() && $formDef->isValid()) {
-////            $fuelData = $this->getDoctrine()->getRepository('AppBundle:Fuel')->findAll();
-////            foreach($fuelData){
-////        }
+        #change rate
+        $formRate = $this->createForm(RateType::class, $fuelInsert, array(
+            'action' => $this->generateUrl('calculator_show')
+        ));
+        $formRate->handleRequest($request);
         
+        if ($formRate->isValid()) {
+            foreach($this->getDoctrine()->getRepository('AppBundle:Fuel')->findAll() as $value ) {
+                $value->setDefPercentageRate($formRate->getData()->getDefPercentageRate());
+                $em->persist($value);
+                $em->flush();
+            }
+            return $this->redirect($this->generateUrl('calculator_show'));
+        }
         
-        
-        $em->flush(); 
-        
-        
-        
-        
+
         $workingcondition = $this->getDoctrine()
             ->getRepository('AppBundle:Workingcondition')
             ->findAll();
@@ -150,6 +156,6 @@ class CalculatorController extends AbstractController
             ->getRepository('AppBundle:Currency')
             ->findAll();
 
-        return $this->render(':Admin:calculator.html.twig', array( 'formCurrency' => $formCurrency->createView(), 'formWorkingcondition' => $formWorkingcondition->createView(), 'formPrice' => $formPrice->createView(), 'workingcondition' => $workingcondition, 'currency' => $currency ));
+        return $this->render(':Admin:calculator.html.twig', array( 'formRate' => $formRate->createView(), 'formCurrency' => $formCurrency->createView(), 'formWorkingcondition' => $formWorkingcondition->createView(), 'formPrice' => $formPrice->createView(), 'workingcondition' => $workingcondition, 'currency' => $currency ));
     }
 }
