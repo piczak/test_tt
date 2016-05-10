@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TCO - </title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block stylesheets %}
+            
+        <!-- vendor css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/dashboard.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/icon-style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap-table.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/ladda-themeless.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/ionicons.min.css') }}">
+        
+ 
+        <!-- general css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fos.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/angular.css') }}">
+        
+        <!-- admin css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin/calculator.css') }}">
+        
+        
+        {% endblock %}
+
+    </head>
+    
+    <body>
+
+    {% block body %}{% endblock %}
+    
+    
+    {% block javascripts %}
+        
+        <!-- vendor scripts -->
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-1.11.3.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/spin.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/ladda.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/main.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/sortable.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table-export.js') }}"></script>
+        
+        
+        
+        
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular-animate.js') }}"></script>
+        
+        <!-- not vendor -->
+        <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
+        
+    {% endblock %}
+    
+    </body>
+</html>

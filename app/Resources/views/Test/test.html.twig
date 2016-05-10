@@ -1,0 +1,223 @@
+{% extends 'Test/admin_nav.html.twig' %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="clearfix">
+            {# side-nav sm-lg #}
+            {% include 'Test/admin_side_nav.html.twig' %}
+            
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="page-content-wrapper">
+                <h1 class="page-header">CALCULATOR SETTINGS</h1>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Working Conditions</strong>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="text-center" width="100">Multiplier</th>
+                                        <th class="text-center" width="80">Default</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="work-empty">
+                                    <tr style="display:none;">
+                                        <td><span class="text-input"><input type="text" class="form-control"></span></td>
+                                        <td class="text-center"><span class="text-input"><input type="text" class="form-control"></span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio"/>
+                                                    <label for="radio"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-input">Seasonal</span></td>
+                                        <td class="text-center"><span class="text-input">1</span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio1"/>
+                                                    <label for="radio1"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch0" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch0" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-input">Light</span></td>
+                                        <td class="text-center"><span class="text-input">1</span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio2" checked/>
+                                                    <label for="radio2"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch1" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch1" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-input">Normal</span></td>
+                                        <td class="text-center"><span class="text-input">1</span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio3"/>
+                                                    <label for="radio3"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch2" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch2" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-input">Heavy</span></td>
+                                        <td class="text-center"><span class="text-input">1</span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio4"/>
+                                                    <label for="radio4"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch3" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch3" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-input">Extreme</span></td>
+                                        <td class="text-center"><span class="text-input">2</span></td>
+                                        <td class="text-center data-switch">
+                                            <div class="funkyradio">
+                                                <div class="funkyradio-success">
+                                                    <input type="radio" name="radio" id="radio5"/>
+                                                    <label for="radio5"></label>
+                                                </div>
+                                            </div>
+                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" checked="" id="workingonoffswitch4" class="onoffswitch-checkbox" name="onoffswitch">
+                                                <label for="workingonoffswitch4" class="onoffswitch-label">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="panel-footer clearfix">
+                                <button id="add-work" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Fuel Price</strong>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th width="100">$US</th>
+                                        <th width="100">$CAN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>per gallon</td>
+                                        <td><span class="text-input">2.079</span></td>
+                                        <td><span class="text-input">2.700</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>per liter</td>
+                                        <td><span class="text-input">0.549</span></td>
+                                        <td><span class="text-input">0.713</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><strong>DEF Price</strong></div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th width="100">$US</th>
+                                        <th width="100">$CAN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>per gallon</td>
+                                        <td><span class="text-input">2.999</span></span></td>
+                                        <td><span class="text-input">3.900</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>per liter</td>
+                                        <td><span class="text-input">0.792</span></td>
+                                        <td><span class="text-input">1.031</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>DEF % Rate</strong>
+                            </div>
+                            <div class="panel-body">
+                                <span class="text-input percentage">5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
