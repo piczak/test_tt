@@ -1,14 +1,16 @@
 {% extends 'Test/admin_nav.html.twig' %}
 
 
+{% form_theme formWorkingcondition 'form_theme.html.twig' %}
+
 {% block content %}
 
-    <div class="container-fluid">
+    <div class="container-fluid calculator" ng-app="ngAnimate">
         <div class="clearfix">
             {# side-nav sm-lg #}
             {% include 'Test/admin_side_nav.html.twig' %}
-            
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="page-content-wrapper">
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" id="page-content-wrapper">
                 <h1 class="page-header">CALCULATOR SETTINGS</h1>
 
                 <div class="row">
@@ -17,142 +19,163 @@
                             <div class="panel-heading">
                                 <strong>Working Conditions</strong>
                             </div>
-                            <table class="table">
+                            
+                            {{ form_start(formWorkingcondition, {'attr': {'id': 'task'}}) }}
+                            
+                            <table class="table no-margin">
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="text-center" width="100">Multiplier</th>
-                                        <th class="text-center" width="80">Default</th>
+                                        
+                                        <th class="text-center no-gutter-left">multiplier</th>
+                                        
+                                        <th class="text-center no-gutter-right">default </th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody class="work-empty">
-                                    <tr style="display:none;">
-                                        <td><span class="text-input"><input type="text" class="form-control"></span></td>
-                                        <td class="text-center"><span class="text-input"><input type="text" class="form-control"></span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio"/>
-                                                    <label for="radio"></label>
+
+                                    {% for form in formWorkingcondition.forms %}
+
+                                    <tr>
+                                        <td class="text-center col-xs-3">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="overlay-show input-position" ng-show="toggle_workingcondition_{{ form.vars.data.id }}">
+                                                        <span class="col-xs-12">
+                                                            {{ form_row(form.workingcondition) }}
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="col-xs-3 only-text" ng-click="toggle_workingcondition_{{ form.vars.data.id }} = !toggle_workingcondition_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.workingcondition }}
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
+                                        </td>
+
+                                        <td class="text-center col-xs-3">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="overlay-show input-position" ng-show="toggle_multiplier_{{ form.vars.data.id }}">
+                                                        <span class="col-xs-12">
+                                                            {{ form_row(form.multiplier) }}
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="col-xs-3" ng-click="toggle_multiplier_{{ form.vars.data.id }} = !toggle_multiplier_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.multiplier }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="text-center col-xs-7">
+                                            <div class="row">
+                                                <div class="col-xs-12 pull-left data-switch">
+                                                    <div class="funkyradio">
+                                                        <div class="funkyradio-success">
+                                                            {{ form_row(form.isDefault) }}
+                                                            <label for="{{ form.vars.id }}_isDefault"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
+
+                                                    <div class="onoffswitch">
+                                                        {{ form_row(form.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+
+                                                        <label for="{{ form.vars.id }}_isActive" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>
+                                    {% endfor %}
+                                    
+                                    {{ form_end(formWorkingcondition) }}
+                                    
                                     <tr>
-                                        <td><span class="text-input">Seasonal</span></td>
-                                        <td class="text-center"><span class="text-input">1</span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio1"/>
-                                                    <label for="radio1"></label>
+                                        <td class="col-xs-3 input-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 input-add-correction" ng-show="toggle_cond">
+                                                    <div class="row" ng-show="toggle_cond">
+                                                        <span class="col-xs-12 margin-left-2">
+                                                            <input class="form-control" type="text" id="workingcondidtion_add" name="new_workingcondition" maxlength="255">
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch0" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch0" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
+
+                                                <div class="col-xs-12">
+                                                    <span class="col-xs-3 only-text">
+
+                                                    </span>
+                                                </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="text-input">Light</span></td>
-                                        <td class="text-center"><span class="text-input">1</span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio2" checked/>
-                                                    <label for="radio2"></label>
+
+
+                                        <td class="col-xs-3 input-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 input-add-correction" ng-show="toggle_cond">
+                                                    <div class="row">
+                                                        <span class="col-xs-12 ">
+                                                            <input class="form-control" type="number" id="multiplier_add" name="new_multiplier" maxlength="255">
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch1" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch1" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
+
+                                                <div class="col-xs-12 input-add-correction">
+                                                    <span class="col-xs-3 only-text">
+
+                                                    </span>
+                                                </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="text-input">Normal</span></td>
-                                        <td class="text-center"><span class="text-input">1</span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio3"/>
-                                                    <label for="radio3"></label>
+
+                                        <td class="text-center col-xs-3 checkbox-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 overlay-show-add pull-left data-switch" ng-show="toggle_cond">
+                                                    <div class="funkyradio funkyradio-correct">
+                                                        <div class="funkyradio-success funkyradio-success-correct">
+                                                            <input type="radio" id="toggle_cond_isDefault" name="new_isDefault" value="1">
+                                                            <label for="toggle_cond_isDefault"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="slide-swipe slide-swipe-correct"><i class="fa fa-ellipsis-v"></i></span>
+
+                                                    <div class="onoffswitch onoffswitch-correct">
+                                                        <input type="checkbox" id="toggle_cond_isActive" name="new_isActive" class="onoffswitch-checkbox" value="1">
+                                                        <label for="toggle_cond_isActive" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch2" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch2" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="text-input">Heavy</span></td>
-                                        <td class="text-center"><span class="text-input">1</span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio4"/>
-                                                    <label for="radio4"></label>
+                                                <div class="col-xs-12">
+                                                    <div class="text-center button-add pull-right" ng-click="toggle_cond = !toggle_cond">
+                                                        <button class="" type="button">
+                                                            Add
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch3" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch3" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="text-input">Extreme</span></td>
-                                        <td class="text-center"><span class="text-input">2</span></td>
-                                        <td class="text-center data-switch">
-                                            <div class="funkyradio">
-                                                <div class="funkyradio-success">
-                                                    <input type="radio" name="radio" id="radio5"/>
-                                                    <label for="radio5"></label>
-                                                </div>
-                                            </div>
-                                            <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" checked="" id="workingonoffswitch4" class="onoffswitch-checkbox" name="onoffswitch">
-                                                <label for="workingonoffswitch4" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="panel-footer clearfix">
-                                <button id="add-work" class="btn btn-default btn-xs pull-right"><i class="fa fa-plus"></i> Add</button>
-                            </div>
+                                
                         </div>
+                                    
+                        <button type="submit" form="task" class="btn btn-success">
+                            Save
+                        </button>
                     </div>
+                            
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -217,7 +240,26 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>             
     </div>
+               
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        angular.module('ngAnimate', []).
+        directive('paneltitle',function(){
+            return {
+                restrict:"E",
+                link:function(scope,element,attrs) {
+                    scope.title=attrs.title
+                },
+                template:'<div class="col-xs>12"><div class="col-xs-4">1</div><div class="col-xs-4">2</div><div class="col-xs-4">3</div></div>'
+            }
+        })
+    </script>
 
 {% endblock %}

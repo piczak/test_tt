@@ -1,134 +1,166 @@
 
-            {# WORKINGCONDITION #}
-            <div class="well no-margin">
-                <div class="col-xs-12 overlay-position workingcondition-group">
-                    <div class="row">
-                        {# EDIT workingcondition START #}
-                        <div class="overlay-show" ng-show="toggle1">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-3 col-md-3">
+                    {# WORKINGCONDITION #}
+                    <div class="col-md-4 workingcondition">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Working Conditions</strong>
+                            </div>
+                            
+                            {{ form_start(formWorkingcondition, {'attr': {'id': 'task_workingcondition'}}) }}
+                            
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        
+                                        <th class="no-gutter-left">multiplier</th>
+                                        
+                                        <th class="text-center no-gutter-right">default </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody class="work-empty">
 
-                                    <p class="visible-xs visible-sm pull-left">Working condition:</p>
+                                    {% for form in formWorkingcondition.forms %}
 
-                                    <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-9 col-md-6">
-
-                                    {{ form_start(formWorkingcondition, {'attr': {'id': 'task'}}) }}
-
-                                        {% for form in formWorkingcondition.forms %}
-
-                                    <div class="row">
-                                        <span class="col-xs-3">
-                                            <p><strong>{{ form.vars.data.workingcondition }}</strong></p>
-                                        </span>
-
-
-                                        <span class="col-xs-3">
-                                            {{ form_row(form.multiplier) }}
-                                        </span>
-
-                                        <span class="col-xs-3">
+                                    <tr>
+                                        <td class="col-xs-3">
                                             <div class="row">
-                                                <div class="pull-right">
-                                                    {{ form_row(form.isDefault) }}
+                                                <div class="col-xs-12">
+                                                    <div class="row gutter-left-5">
+                                                        <div class="overlay-show input-workingcondition" ng-show="toggle_workingcondition_{{ form.vars.data.id }}">
+                                                            <span class="only-text col-xs-12">
+                                                                {{ form_row(form.workingcondition) }}
+                                                            </span>
+                                                        </div>
+
+                                                        <span class="col-xs-12 text-input margin-right-5" ng-click="toggle_workingcondition_{{ form.vars.data.id }} = !toggle_workingcondition_{{ form.vars.data.id }}">
+                                                            {{ form.vars.data.workingcondition }}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </span>
+                                        </td>
 
-                                        <span class="col-xs-3 pull-left">
+                                        <td class="col-xs-3">
                                             <div class="row">
-                                                <p class="pull-left">
-                                                    default
-                                                </p>
+                                                <div class="col-xs-12">
+                                                    <div class="overlay-show input-price" ng-show="toggle_multiplier_{{ form.vars.data.id }}">
+                                                        <span class="col-xs-12">
+                                                            {{ form_row(form.multiplier) }}
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="col-xs-12 text-input" ng-click="toggle_multiplier_{{ form.vars.data.id }} = !toggle_multiplier_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.multiplier }}
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </span>
+                                        </td>
 
-                                    </div>
+                                        <td class="text-center col-xs-7">
+                                            <div class="row">
+                                                <div class="col-xs-12 pull-left data-switch">
+                                                    <div class="funkyradio">
+                                                        <div class="funkyradio-success">
+                                                            {{ form_row(form.isDefault) }}
+                                                            <label for="{{ form.vars.id }}_isDefault"></label>
+                                                        </div>
+                                                    </div>
 
-                                        {% endfor %}                  
+                                                    <span class="slide-swipe"><i class="fa fa-ellipsis-v"></i></span>
 
+                                                    <div class="onoffswitch">
+                                                        {{ form_row(form.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+
+                                                        <label for="{{ form.vars.id }}_isActive" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
                                     {{ form_end(formWorkingcondition) }}
+                                    
+                                    <tr>
+                                        <td class="col-xs-3 input-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 overlay-show add-input-workingcondition" ng-show="toggle_cond">
+                                                    <div class="row" ng-show="toggle_cond">
+                                                        <span class="col-xs-12 margin-left-2">
+                                                            <input class="form-control" type="text" id="workingcondidtion_add" name="new_workingcondition" maxlength="255">
+                                                        </span>
+                                                    </div>
+                                                </div>
 
-                                </div>
+                                                <div class="col-xs-12">
+                                                    <span class="col-xs-12 only-text">
 
-                                <div class="visible-xs visible-sm row">
-                                    <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
-                                            <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
-                                                Return
-                                            </button>
-                                        </div>
-
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                            <button type="submit" form="task" class="col-xs-12 btn btn-success">
-                                                Save
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="visible-md visible-lg">
-                                    <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-10">
-                                            <div class="row">
-                                                <button ng-click="toggle1 = !toggle1" class=" col-xs-12 btn btn-info">
-                                                    Return
-                                                </button>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </td>
 
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                            <div class="row">
-                                                <button type="submit" form="task" class="col-xs-12 btn btn-success">
-                                                    Save
-                                                </button>
+
+                                        <td class="col-xs-3 input-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 overlay-show add-input-price" ng-show="toggle_cond">
+                                                    <div class="row">
+                                                        <span class="col-xs-12 ">
+                                                            <input class="form-control" type="number" id="multiplier_add" name="new_multiplier" maxlength="255">
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-12 input-add-correction">
+                                                    <span class="col-xs-3 only-text">
+
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        </td>
 
-                        </div>
-                        {# EDIT workingcondition END #}
+                                        <td class="text-center col-xs-3 checkbox-add">
+                                            <div class="row overlay-position">
+                                                <div class="col-xs-12 overlay-show-add pull-left data-switch add-correct" ng-show="toggle_cond">
+                                                    <div class="funkyradio funkyradio-correct">
+                                                        <div class="funkyradio-success funkyradio-success-correct">
+                                                            <input type="radio" id="toggle_cond_isDefault" name="new_isDefault" value="1">
+                                                            <label class="add-checkbox-correct" for="toggle_cond_isDefault"></label>
+                                                        </div>
+                                                    </div>
 
+                                                    <span class="slide-swipe slide-swipe-correct"><i class="fa fa-ellipsis-v"></i></span>
 
-                        {# DISPLAY workingcondition START #}
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-
-                                <p class="visible-xs visible-sm pull-left">Working condition:</p>
-
-                                <p class="hidden-xs hidden-sm pull-right">Working condition:</p>
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-9 col-md-6">
-
-                            {% for element in workingcondition %}
-
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <p><strong>{{ element.workingcondition }}</strong>({{ element.multiplier }}) {{ element.isDefault ? 'default' }}</p>
-                                    </div>
-                                </div>
-
-                            {% endfor %}
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-3 margin-top-10">
-                                <div class="margin-10">
-                                    <button ng-click="toggle1 = !toggle1" class="col-xs-12 btn btn-info">
-                                        Modify
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        {# DISPLAY workingcondition END #}
-                    </div>
-                </div>
+                                                    <div class="onoffswitch onoffswitch-correct">
+                                                        <input type="checkbox" id="toggle_cond_isActive" name="new_isActive" class="onoffswitch-checkbox" value="1">
+                                                        <label for="toggle_cond_isActive" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 add-correct">
+                                                    <div class="text-center button-add pull-right" ng-click="toggle_cond = !toggle_cond">
+                                                        <button class="btn btn-success" type="button">
+                                                            Add
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             
-                <div class="clearfix"></div>
-            </div>
+                            <div class="panel-footer clearfix button-padding">
+                                <button type="submit" form="task_workingcondition" class="btn btn-success button-full">
+                                    Save
+                                </button>
+                            </div>  
+                        </div>
+                    </div>

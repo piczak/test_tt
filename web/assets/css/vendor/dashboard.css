@@ -311,9 +311,9 @@ input{
 	padding:5px 10px;
 	cursor:pointer;
 	position:absolute;
-	right:5px;
-	top:5px;
-	z-index:3;
+	right:9px;
+	top:-2px;
+	z-index:5;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
@@ -514,13 +514,14 @@ li.placeholder:before{
 }
 /* Active & Inactive Switch */
 .onoffswitch {
+        height:32px;
 	width: 3px;
     -webkit-user-select:none;
 	-moz-user-select:none;
 	-ms-user-select: none;
 	position: absolute;
-	top: 4px;
-	right: 4px;
+	top: -3px;
+	right: 11px;
 	white-space: nowrap;
 	padding-left: 0px;
 	-webkit-transition: all 0.5s ease-in-out;
@@ -529,10 +530,11 @@ li.placeholder:before{
 	-ms-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 	overflow:hidden;
-	z-index:3;
+	z-index:5;
 }
 .list-group-item.open .onoffswitch, .data-switch.open .onoffswitch{
-	right:4px;
+        margin-right:2px;
+	right:9px;
 	width:90px;	
 }
 .onoffswitch-checkbox {
@@ -542,7 +544,7 @@ li.placeholder:before{
 .onoffswitch-label {
     display: block; overflow: hidden; cursor: pointer;
 	margin:0;
-	border-radius:2px;
+	border-radius:0px;
 	width:90px
 }
 
@@ -576,7 +578,7 @@ li.placeholder:before{
 
 .onoffswitch-switch {
     display: block; width: 15px; margin: 0px;
-    border: 1px solid #999; border-radius: 2px;
+    border: 1px solid #999;
     position: absolute; top: 0; bottom: 0; right: 75px;
     -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
     -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 

@@ -1,24 +1,49 @@
 $(document).ready(function () {
+    
+    
+    //slide-swipe from vendors main.js
+    	$('.list-group-item span.slide-swipe').on('click', function(event) {
+		event.preventDefault();
+		$(this).parent('a.list-group-item').toggleClass('open');
+	});
+	
+	$('.data-switch span.slide-swipe').on('click', function(event) {
+		event.preventDefault();
+		$(this).parent('.data-switch').toggleClass('open');
+	});
+    //end slide-swipe
+    
 
     $('input[type="radio"]').on('click', function () {
         var form = $(this).closest('form').attr('id');
-        $('#'+form).find('input:checked').each(function () {
-            $(this).prop('checked', false);
-        });
-        $(this).prop('checked', true);
-    });
+        
+        if($('#'+form).find('.prices').length === 0) {
+            $('#'+form).find('input:checked').each(function () {
+                if(!$(this).is('.onoffswitch-checkbox')) {
+                    $(this).prop('checked', false);
+                }
+            });
 
-    
-    
-/*
-    $('input[type="radio"]').on('click', function () {
-        var form = $(this).closest('form').attr('id');
-        $('input[type="radio"]').each(function () {
-            $(this).prop('checked', false);
-        });
-        $(this).prop('checked', true);
+            $(this).prop('checked', true);
+            
+        } else {
+            
+            $('#'+form).find('input:checked').each(function () {
+                $(this).prop('checked', false);
+            });
+
+            var id = $(this).attr('id').match(/[0-9]+/);
+
+            $('.prices').find('input[type="radio"]').each(function () {
+
+                if( $(this).attr('id').indexOf(id) > -1 ){
+                   $(this).prop('checked', true);
+                }
+            });
+        }
     });
-*/
+    
+
 
     function centerObject() {
         var windowHeight = $(window).height();
@@ -105,6 +130,16 @@ $(document).ready(function () {
         matchColsHeight();
         centerObject();
         matchHeight();
+        
+        
+        var checkedid = $('.prices').find('input:checked').attr('id').match(/[0-9]+/);
+    
+        $('.prices').find('input[type="radio"]').each(function () {
+
+            if( $(this).attr('id').indexOf(checkedid) > -1 ){
+               $(this).prop('checked', true);
+            }
+        });
 
     });
 

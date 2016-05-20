@@ -1,5 +1,25 @@
 function fnEditableText(e) {
-
+	var inputbox = $('<input class="form-control" type="text"/>');
+	var txt=$(this).text();
+	
+	$(this).unbind('click').html(inputbox);
+	inputbox.focus();
+	inputbox.val(txt);
+	
+	if(inputbox.focus()){
+		$('.list-group-item').removeClass('open');
+		$('.data-switch').removeClass('open');
+	}
+	
+	$(this).find('.form-control').keypress(function(e) {
+		if(e.which == 13) {
+			var objTxt = $(this).parent();
+			var objTxtpercentage = $(this).parent('.percentage');
+			objTxt.html($(this).val());
+			objTxtpercentage.html($(this).val() + '%');
+			objTxt.click(fnEditableText);
+		}
+	});
 }
 
 //Add working conditions
@@ -10,7 +30,32 @@ $(document).on('click', '#add-work', function() {
 
 
     
-  
+    $('.work-empty tr').last().find('td').each(function () {
+        
+        if($(this).find('.overlay-show').length != 0) {
+            var ngshow = $(this).find('.overlay-show').attr('ng-show').replace(/\d/, function(n){ return ++n });
+            $(this).find('.overlay-show').removeClass('ng-hide').attr('ng-show', ngshow);
+
+            var id = $(this).find('.form-control').attr('id').replace(/\d/, function(n){ return ++n });
+            $(this).find('.form-control').attr('id', id);
+
+            var name = $(this).find('.form-control').attr('name').replace(/\d/, function(n){ return ++n });
+            $(this).find('.form-control').attr('name', name);
+
+            $(this).find('.only-text').attr('ng-click', ngshow+' = !'+ngshow);
+        }
+                
+        if($(this).find('.funkyradio-success').length != 0) {
+            var inputId = $(this).find('.funkyradio-success').find('input').attr('id').replace(/\d/, function(n){ return ++n });
+            $(this).find('.funkyradio-success').find('input').attr('id', inputId);
+
+            var inputName = $(this).find('.funkyradio-success').find('input').attr('name').replace(/\d/, function(n){ return ++n });
+            $(this).find('.funkyradio-success').find('input').attr('name', inputName);
+
+            var labelFor = $(this).find('.funkyradio-success').find('label').attr('for').replace(/\d/, function(n){ return ++n });
+            $(this).find('.funkyradio-success').find('label').attr('for', labelFor);
+        }
+    });
     
     //change increment number in the string
 //    var ngshow = $('.work-empty tr').last().find('.overlay-show').attr('ng-show').replace(/\d/, function(n){ return ++n });
@@ -167,6 +212,16 @@ $(document).ready(function() {
 		  top: position.top - adjustment.top
 		});
 	  }
+	});
+	
+	$('.list-group-item span.slide-swipe').on('click', function(event) {
+		event.preventDefault();
+		$(this).parent('a.list-group-item').toggleClass('open');
+	});
+	
+	$('.data-switch span.slide-swipe').on('click', function(event) {
+		event.preventDefault();
+		$(this).parent('.data-switch').toggleClass('open');
 	});
 	
 	//Add new model

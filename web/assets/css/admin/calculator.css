@@ -49,10 +49,10 @@
     display:         flex;
     flex-direction: row;
 }
-.admin .position-relative {
+.calculator .position-relative {
     position:relative;
 }
-.admin .position-absolute {
+.calculator .position-absolute {
     position:absolute;
     bottom:0px
 }
@@ -146,3 +146,137 @@ ul {
         margin:3px;
     }
 }
+.calculator .transparent {
+    background-color:transparent;
+}
+.calculator .input-add-correction {
+    margin-left:2px;
+}
+.calculator th.no-gutter-right {
+    padding-right:0px;
+}
+.calculator th.no-gutter-left {
+    padding-left:0px;
+}
+.calculator .input-add {
+    padding-top:3px;
+    padding-bottom:3px;
+}
+.calculator .overlay-show-add{
+    background-color: transparent;
+    height: 42px;
+    width: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    color: #333;
+    z-index: 4;
+}
+.calculator .funkyradio-correct {
+    background-color:white;
+    height:38px;
+}
+.calculator .funkyradio-success-correct {
+    padding-top:7px;
+}
+.calculator .slide-swipe-correct {
+    top:6px;
+}
+.calculator .onoffswitch-correct {
+    top:4px;
+}
+.calculator .checkbox-add {
+    padding-top:0px;
+    padding-bottom:3px;
+}
+.calculator .button-add {
+    padding-top:4px;
+}
+.calculator .price input {
+    padding:5px;
+    width:50px;
+}
+.calculator .input-position {
+    background-color:transparent;
+    left:-2px;
+}
+.calculator .button-padding {
+    padding:4px;
+}
+.calculator .button-full {
+    width:100%;
+}
+
+/* workingcondition */
+.calculator .workingcondition .input-workingcondition {
+    background-color:transparent;
+    left:-2px;
+    top:-7px;
+}
+.calculator .workingcondition .input-workingcondition .form-control  {
+    min-width:75px;
+    padding:4px 6px;
+}
+.calculator .workingcondition .input-price {
+    background-color:transparent;
+    left:8px;
+    top:-7px;
+}
+.calculator .workingcondition .input-price .form-control  {
+    max-width:35px;
+    padding:4px 6px;
+}
+.calculator .workingcondition .add-input-workingcondition {
+    background-color:transparent;
+    left:-2px;
+    top:-17px;
+}
+.calculator .workingcondition .add-input-workingcondition .form-control  {
+    min-width:75px;
+    padding:4px 6px;
+}
+.calculator .workingcondition .add-input-price {
+    background-color:transparent;
+    left:8px;
+    top:-17px;
+}
+.calculator .workingcondition .add-input-price .form-control  {
+    max-width:35px;
+    padding:4px 6px;
+}
+.calculator .workingcondition .add-correct {
+    padding-right:11px;
+}
+.calculator .workingcondition .add-checkbox-correct {
+    left:-2px;
+}
+
+
+/* fuel/def price */
+.calculator .fuel .input-fuel {
+    background-color:transparent;
+    left:8px;
+    top:-7px;
+}
+
+.calculator .fuel .input-fuel .form-control  {
+    max-width:55px;
+    padding:4px 6px;
+}
+
+/* rate */
+.calculator .rate .input-rate {
+    background-color:transparent;
+    right:calc(-100% + 43px);
+    top:-7px;
+}
+
+.calculator .rate .input-rate .form-control  {
+    width:48px;
+    padding:4px 4px 4px 6px;
+    text-align:right;
+}
+.calculator .rate .percentage {
+    padding-left:5px
+}
+

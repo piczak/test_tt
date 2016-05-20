@@ -7826,11 +7826,11 @@ INSERT INTO `user` VALUES ('2', 'user', 'user', 'user@tco.us', 'user@tco.us', '1
 -- ----------------------------
 -- Records of workingcondition
 -- ----------------------------
-INSERT INTO `workingcondition` VALUES ('1', 'Seasonal', '1', '0', '2016-03-28 16:02:36', '2016-03-28 16:02:36');
-INSERT INTO `workingcondition` VALUES ('2', 'Light', '1', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12');
-INSERT INTO `workingcondition` VALUES ('3', 'Normal', '1', '1', '2016-03-28 16:02:12', '2016-03-28 16:02:12');
-INSERT INTO `workingcondition` VALUES ('4', 'Heavy', '1', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12');
-INSERT INTO `workingcondition` VALUES ('5', 'Extreme', '2', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12');
+INSERT INTO `workingcondition` VALUES ('1', 'Seasonal', '1', '0', '2016-03-28 16:02:36', '2016-03-28 16:02:36', '1');
+INSERT INTO `workingcondition` VALUES ('2', 'Light', '1', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12', '1');
+INSERT INTO `workingcondition` VALUES ('3', 'Normal', '1', '1', '2016-03-28 16:02:12', '2016-03-28 16:02:12', '1');
+INSERT INTO `workingcondition` VALUES ('4', 'Heavy', '1', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12', '1');
+INSERT INTO `workingcondition` VALUES ('5', 'Extreme', '2', '0', '2016-03-28 16:02:12', '2016-03-28 16:02:12', '1');
 
 -- ----------------------------
 -- Procedure structure for Compute for PartsCostTotal (MOD)

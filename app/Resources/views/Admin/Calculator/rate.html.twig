@@ -1,113 +1,42 @@
             
-            {# RATE #}
-            <div class="well no-margin">
-                <div class="col-xs-12 overlay-position workingcondition-group">
-                    
-                    {# EDIT rate START #}
-                    <div class="overlay-show" ng-show="toggle3">
-                        <div class="col-xs-6 col-sm-6 col-md-3">
-
-                                <p class="pull-right">DEF % rate:</p>
-
-                        </div>
-
-                        <div class="col-xs-6 col-sm-6 col-md-3">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="row">
-                                        {% for element in currency %}
-                                            {% if element.isDefault == 'true' %}
-                                                <strong>{{ element.fuelId.defPercentageRate }} %</strong>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-6">
-                                    {{ form_start(formRate, {'attr': {'id': 'rate_form'}}) }}
-                                    <div class="pull-right">{{ form_row(formRate.defPercentageRate) }}</div>
-                                    {{ form_end(formRate) }}
-                                </div>
+                    {# RATE #}
+                    <div class="col-md-4 rate">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>DEF % Rate</strong>
                             </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 no-gutter-left">
-                                            <div class="visible-md visible-lg">
-                                                <button type="submit" form="rate_form" class="col-xs-12 btn btn-success">Save</button>
+                            
+                                <div class="panel-body">
+                                    
+                                {{ form_start(formRate, {'attr': {'id': 'task_rate'}}) }}
+                                    
+                                    <div class="col-xs-2">
+                                        <div class="row" overlay-position-right>
+                                            <div class="overlay-show-right input-rate" ng-show="toggle_rate">
+                                                <span class="">
+                                                    {{ form_row(formRate) }}
+                                                </span>
                                             </div>
 
-                                            <div class="visible-xs visible-sm">
-                                                <button ng-click="toggle3 = !toggle3" class=" col-xs-12 btn btn-info">Back</button>
-                                            </div>
+                                            <span class="pull-right only-text" ng-click="toggle_rate = !toggle_rate">
+                                                {{ formRate.vars.value.defPercentageRate }}
+                                            </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">
+                                    
+                                    <div class="col-xs-8">
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <div class="visible-md visible-lg">
-                                                    <button ng-click="toggle3 = !toggle3" class=" col-xs-12 btn btn-info">Back</button>
-                                                </div>
-
-                                                <div class="visible-xs visible-sm">
-                                                    <button type="submit" form="task2" class="col-xs-12 btn btn-success">Save</button>
-                                                </div>
-                                            </div>
-                                       </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {# EDIT rate END #}
-                    
-                    <div class="clearfix"></div>
-                    
-                    {# DISPLAY rate START #}
-                    <div class="row">
-                        <div class="">
-                            <div class="col-xs-6 col-sm-6 col-md-3">
-
-                                <p class="pull-right">DEF % rate:</p>
-
-                                </div>
-
-                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="row">
-                                                {% for element in currency %}
-                                                    {% if element.isDefault == 'true' %}
-                                                        <strong>{{ element.fuelId.defPercentageRate }} %</strong>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </div>
+                                            <span class="percentage">%</span>
                                         </div>
                                     </div>
-                                </div>
-
-                            <div class="col-xs-12 col-sm-12 col-md-3">
-                                <div class="row">
-                                    <div class="visible-xs visible-sm">
-                                        <button ng-click="toggle3 = !toggle3" class="col-xs-12 btn btn-info">Modify</button>
-                                    </div>
-                                    <div class="hidden-xs hidden-sm gutter-left">
-                                        <button ng-click="toggle3 = !toggle3" class="col-xs-12 btn btn-info">Modify</button>
-                                    </div>
-                                </div>
+                                    
+                                {{ form_end(formRate) }}
+                                
                             </div>
-
-                            <div class="clearfix"></div>
+                            <div class="panel-footer clearfix button-padding">
+                                <button type="submit" form="task_rate" class="btn btn-success button-full">
+                                    Save
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    {# DISPLAY rate END #}
-                    
-                </div>
-
-                <div class="clearfix"></div>
-            </div>

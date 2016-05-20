@@ -10,12 +10,18 @@
             
         <!-- vendor css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/dashboard.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/icon-style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/bootstrap-table.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/ladda-themeless.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/font-awesome.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/angular.css') }}">
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendor/ionicons.min.css') }}">
+        
+ 
         <!-- general css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fos.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/angular.css') }}">
         
         <!-- admin css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin/calculator.css') }}">
@@ -37,13 +43,22 @@
     {% block body %}{% endblock %}
         </div>
     {% block javascripts %}
+        
+        
         <!-- vendor scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-2.1.1.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/spin.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/ladda.min.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/main.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/sortable.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table-export.js') }}"></script>
+
         <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/angular_1_5_5/angular-animate.js') }}"></script>
         
-        <!-- general scripts -->
+        <!-- not vendor -->
         <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
         
         <script>

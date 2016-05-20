@@ -1,457 +1,194 @@
             
-            {# CURRENCY(fuel/def) #}
-            <div class="well no-margin">
-                <div class="col-xs-12 overlay-position workingcondition-group">
-                    
-                    {# edit/add START #}
-                    <div class="overlay-show" ng-show="toggle_currency_display_edit">
+                    {# CURRENCY(fuel/def) #}
+                    <div class="col-md-4 fuel">
+
+                        {{ form_start(formPrice, {'attr': {'id': 'task_price'}}) }}
                         
-                        {# NEW currency START#}
-                        <div class="overlay-show" ng-show="toggle_currency_edit_new">
-                            <div class="col-xs-12 col-sm-12 col-md-9">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        
-                                        {{ form_start(formCurrency, {'attr': {'id': 'task4'}}) }}
-                                        
-                                        {# start currency(NEW) #}
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <p><strong>Add new Currency</strong></p>
-                                                
-                                                <div class="clearfix"></div>
-                                                
-                                                <div class="row">
-                                                    <div class="well">
-                                                        <div class="row">
-                                                            <div class="col-xs-4">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-                                                                            <p>currency</p>
-                                                                            {{ form_row(formCurrency.currency) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xs-4">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-                                                                            <p>region</p>
-                                                                            {{ form_row(formCurrency.region) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xs-4">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-                                                                            <p>isDefault</p>
-                                                                            {{ form_row(formCurrency.isDefault) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {# end currency(NEW) #}
-                                        
-                                        <div class="clearfix"></div>
-                                        
-                                        {# start fuel/def price(NEW) #}
-                                        <div class="row">
-                                            <div class="col-xs-12 margin-top-40">
-                                                
-                                                <p><strong>Add fuel and def prices</strong></p>
-                                                
-                                                <div class="row">
-                                                    <div class="well">
-                                                        <div class="row">
-                                                            <div class="col-xs-6 col-sm-3 margin-bottom-10">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-                                                                            <p>fuel price/gallon</p>
-
-                                                                            {{ form_row(formCurrency.fuelId.fuelPriceGallon) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xs-6 col-sm-3 margin-bottom-10">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-
-                                                                            <p>fuel price/liter</p>
-
-                                                                            {{ form_row(formCurrency.fuelId.fuelPriceLiter) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                                    
-                                                            <div class="col-xs-6 col-sm-3">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-
-                                                                            <p>def price/gallon</p>
-
-                                                                            {{ form_row(formCurrency.fuelId.defPriceGallon) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xs-6 col-sm-3">
-                                                                <div class="row">
-                                                                    <div class="center-outer">
-                                                                        <div class="center-inner">
-                                                                            <p>def price/liter</p>
-
-                                                                            {{ form_row(formCurrency.fuelId.defPriceLiter) }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {# end fuel/def price(NEW) #}
-                                            
-                                        {{ form_end(formCurrency) }}
-                                        
-                                    </div>
-                                </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Fuel Price</strong>
                             </div>
-                                        
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-3 margin-10">
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                            <button ng-click="toggle_currency_edit_new = !toggle_currency_edit_new" class=" col-xs-12 btn btn-info">
-                                                Back
-                                            </button>
-                                        </div>
-
-                                        <div class="col-xs-6 col-sm-6 col-md-12 margin-top-10">
-                                            <button type="submit" form="task4" class="col-xs-12 btn btn-success">
-                                                Save
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {# NEW currency END #}
-                        
-                        {# EDIT fuel/def price START#}
-                        <div class="col-xs-12 col-sm-12 col-md-9 tables">
                             
-                        {{ form_start(formPrice, {'attr': {'id': 'task1'}}) }}
-                        
-                            <div class="row">
-                                <div class="col-xs-12">
-
-                                    <p><strong>Fuel Prices</strong></p>
-
-                                    <div class="row">
-
-                                        {# start table fuel price(EDIT) #}
-                                        <div class="table-responsive border-black">
-                                            <table class="table no-margin tables">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="col-xs-1">
-                                                            <strong>remove</strong>
-                                                        </th>
-                                                        <th class="col-xs-3">
-                                                            <strong>Currency</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-2">
-                                                            <strong>default</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-3">
-                                                            <strong>Price/gallon</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-3">
-                                                            <strong>Price/liter</strong>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-
-                                                {% for form in formPrice.forms %}
-                                                    
-                                                <tbody>
-                                                    <td>
-                                                        {{ form_row(form.remove) }}
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        ${{ form.vars.value.currency }}
-                                                    </td>    
-                                                    
-                                                    <td>
-                                                        {{ form_row(form.isDefault) }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ form_row(form.fuelId.fuelPriceGallon) }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ form_row(form.fuelId.fuelPriceLiter) }}
-                                                    </td>
-                                                </tbody>
-                                                
-                                                {% endfor %}                  
-
-                                            </table>
-                                        </div>
-                                        {# end table fuel price(EDIT) #}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row margin-top-30">
-                                <div class="col-xs-12">
-
-                                    <p><strong>DEF Price</strong></p>
-
-                                    <div class="row">
-
-                                        {# start table def price(EDIT) #}
-                                        <div class="table-responsive border-black">
-                                            <table class="table no-margin">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="col-xs-4">
-                                                            <strong>Currency</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-4">
-                                                            <strong>Price/gallon</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-4">
-                                                            <strong>Price/litter</strong>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-
-                                                {% for form in formPrice.forms %}
-                                                        
-                                                <tbody>
-                                                    <td style="padding:10px;">
-                                                        ${{ form.vars.value.currency }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ form_row(form.fuelId.defPriceGallon) }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ form_row(form.fuelId.defPriceLiter) }}
-                                                    </td>
-                                                </tbody>
-                                                
-                                                {% endfor %}
-              
-                                            </table>
-                                        </div>
-                                        {# end table def price(EDIT) #}
-                                    </div>
-                                </div>
-                            </div>
-                                    
-                        {{ form_end(formPrice) }}
-                        </div>
-                        {# EDIT fuel/def price END #}
-                        
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 margin-10">
-                                <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-12 margin-top-10">
-                                        <button ng-click="toggle_currency_display_edit = !toggle_currency_display_edit" class=" col-xs-12 btn btn-info">
-                                            Back
-                                        </button>
-                                    </div>
-
-                                    <div class="col-xs-4 col-sm-4 col-md-12 margin-top-10">
-                                        <button type="submit" form="task1" class="col-xs-12 btn btn-success">
-                                            Save
-                                        </button>
-                                    </div>
-
-                                    <div class="col-xs-4 col-sm-4 col-md-12 margin-top-10">
-                                        <button ng-click="toggle_currency_edit_new = !toggle_currency_edit_new" class=" col-xs-12 btn btn-info">
-                                            New
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {# edit/add END #}
-                    
-                    
-                    {# DISPLAY fuel/def price START #}
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-9 tables">
-                            <div class="row">
-                                <div class="col-xs-12">
-
-                                    <p><strong>Fuel Prices</strong></p>
-
-                                    <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-3">
+                                        </th>
                                         
-                                        {# start table fuel price(DISPLAY) #}
-                                        <div class="table-responsive border-black">
-                                            <table class="table no-margin">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="col-xs-3">
-                                                            <strong>Currency</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-3">
-                                                            <strong>default</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-3">
-                                                            <strong>Price/gallon</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-3">
-                                                            <strong>Price/liter</strong>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-
-                                                {% for element in currency %}
-
-                                                <tbody>
-                                                    <td style="padding:10px;">
-                                                        ${{ element.currency }}
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        {{ element.isDefault ? '<i class="fa fa-check" aria-hidden="true"></i>'|raw }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ element.fuelId.fuelPriceGallon }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ element.fuelId.fuelPriceLiter }}
-                                                    </td>
-                                                </tbody>
-
-                                                {% endfor %}
-
-                                            </table>
-                                        </div>
-                                        {# end table fuel price(DISPLAY) #}
+                                        <th class="col-xs-3">
+                                            gallon
+                                        </th>
                                         
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row margin-top-30">
-                                <div class="col-xs-12">
-
-                                    <p><strong>DEF Price</strong></p>
-
-                                    <div class="row">
-
-                                        {# start table def price(DISPLAY) #}
-                                        <div class="table-responsive border-black">
-                                            <table class="table no-margin">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="col-xs-4">
-                                                            <strong>Currency</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-4">
-                                                            <strong>Price/gallon</strong>
-                                                        </th>
-                                                        
-                                                        <th class="col-xs-4">
-                                                            <strong>Price/litter</strong>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-
-                                                {% for element in currency %}
-
-                                                <tbody>
-                                                    <td style="padding:10px;">
-                                                        ${{ element.currency }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ element.fuelId.defPriceGallon }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ element.fuelId.defPriceLiter }}
-                                                    </td>
-                                                </tbody>
-
-                                                {% endfor %}
-
-                                            </table>
-                                        </div>
-                                        {# end table def price(DISPLAY) #}
+                                        <th class="col-xs-3">
+                                            liter
+                                        </th>
                                         
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 margin-10">
-                                <div class="visible-xs visible-sm">
-                                    <div class="margin-10">
-                                        <button ng-click="toggle_currency_display_edit = !toggle_currency_display_edit" class="col-xs-12 btn btn-info">
-                                            Modify
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="visible-md visible-lg">
-                                    <div class="margin-10">
-                                        <button ng-click="toggle_currency_display_edit = !toggle_currency_display_edit" class="col-xs-12 btn btn-info">
-                                            Modify
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {# DISPLAY fuel/def price END #}
-                    
-                </div>
+                                        <th class="col-xs-3 text-center">
+                                            default
+                                        </th>
+                                    </tr>
+                                </thead>
                                 
-                <div class="clearfix"></div>
-            </div>
+                                <tbody>
+                                    
+                                    {% for form in formPrice.forms %}
+                                        
+                                    <tr>
+                                        <td>
+                                            <div class="">
+                                                <span>
+                                                    <strong>${{ form.vars.data.currency }}</strong>
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="overlay-show input-fuel" ng-show="toggle_fuelPriceGallon_{{ form.vars.data.id }}">
+                                                        <span class="">
+                                                            <div class="row">
+                                                                {{ form_row(form.fuelId.fuelPriceGallon) }}
+                                                            </div>
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="text-input percentage only-text" ng-click="toggle_fuelPriceGallon_{{ form.vars.data.id }} = !toggle_fuelPriceGallon_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.fuelId.fuelPriceGallon }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="overlay-show input-fuel" ng-show="toggle_fuelPriceLiter_{{ form.vars.data.id }}">
+                                                        <span>
+                                                            <div class="row">
+                                                                {{ form_row(form.fuelId.fuelPriceLiter) }}
+                                                            </div>
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="text-input" ng-click="toggle_fuelPriceLiter_{{ form.vars.data.id }} = !toggle_fuelPriceLiter_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.fuelId.fuelPriceLiter }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="text-center funkyradio prices">
+                                                <div class="funkyradio-success fuel-price">
+                                                    {{ form_row(form.isDefault) }}
+                                                    <label for="{{ form.vars.id }}_isDefault"></label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>DEF Price</strong>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-3">
+                                        </th>
+                                        
+                                        <th class="col-xs-3">
+                                            gallon
+                                        </th>
+                                        
+                                        <th class="col-xs-3">
+                                            liter
+                                        </th>
+                                        
+                                        <th class="col-xs-3 text-center">
+                                            default
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    
+                                    {% for form in formPrice.forms %}
+                                        
+                                    <tr>
+                                        <td>
+                                            <div class="">
+                                                <span>
+                                                    <strong>${{ form.vars.data.currency }}</strong>
+                                                </span>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="overlay-show input-fuel" ng-show="toggle_defPriceGallon_{{ form.vars.data.id }}">
+                                                        <span class="">
+                                                            <div class="row">
+                                                                {{ form_row(form.fuelId.defPriceGallon) }}
+                                                            </div>
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="text-input" ng-click="toggle_defPriceGallon_{{ form.vars.data.id }} = !toggle_defPriceGallon_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.fuelId.defPriceGallon }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="col-xs-12">
+                                                <div class="row">
+                                                    <div class="overlay-show input-fuel" ng-show="toggle_defPriceLiter_{{ form.vars.data.id }}">
+                                                        <span>
+                                                            <div class="row">
+                                                                {{ form_row(form.fuelId.defPriceLiter) }}
+                                                            </div>
+                                                        </span>
+                                                    </div>
+
+                                                    <span class="text-input" ng-click="toggle_defPriceLiter_{{ form.vars.data.id }} = !toggle_defPriceLiter_{{ form.vars.data.id }}">
+                                                        {{ form.vars.data.fuelId.defPriceLiter }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="text-center funkyradio prices">
+                                                <div class="funkyradio-success def-price">
+                                                    <input type="radio" id="{{ form.vars.id }}_defPrice" value="1">
+                                                    <label for="{{ form.vars.id }}_defPrice"></label>                                                    
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                                    
+                            <div class="panel-footer clearfix button-padding">
+                                <button type="submit" form="task_price" class="btn btn-success button-full">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                            
+                        {{ form_end(formPrice) }}
+
+                    </div>

@@ -1,0 +1,65 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Workingcondition
+ *
+ * @ORM\Table(name="workingcondition")
+ * @ORM\Entity
+ */
+class Workingcondition
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="workingCondition", type="string", length=255, nullable=false)
+     */
+    private $workingcondition;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="multiplier", type="integer", nullable=false)
+     */
+    private $multiplier;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isDefault", type="boolean", nullable=true)
+     */
+    private $isdefault;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isActive", type="boolean", nullable=true)
+     */
+    private $isactive;    
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
+     */
+    private $createdat;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=false)
+     */
+    private $updatedat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+}

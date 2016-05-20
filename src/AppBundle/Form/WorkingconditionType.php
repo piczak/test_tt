@@ -12,8 +12,10 @@ class WorkingconditionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('multiplier', null, array('label' => false))
-            ->add('isDefault', 'radio', array('label' => false, 'required'=>false));
+            ->add('workingcondition', null, array('label' => false, 'required'=>false))
+            ->add('multiplier', null, array('label' => false, 'required'=>false))
+            ->add('isDefault', 'radio', array('label' => false, 'required'=>false))
+            ->add('isActive', 'checkbox', array('label' => false, 'required'=>false));
                     
                     
                     //CheckboxType::class, array('label' => false));

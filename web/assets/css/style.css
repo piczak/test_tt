@@ -1,4 +1,8 @@
 /* skeleton frame margins, no side paddings on mobile*/
+.margin-right-5 {
+    margin-right:5px;
+}
+
 .container-fluid-frame {
     padding:20px;
 }
@@ -10,22 +14,22 @@
 .no-gutter {
     padding:0px;
 }
-.no-gutter-right {
-    padding-right:-15px;
-}
-.no-gutter-left {
-    padding-left:0px;
-}
+
 .gutter-left {
     padding-left:15px;
 }
-
 .no-margin {
     margin:0px;
 }
 .no-margin-vertical {
     margin-left:0px;
     margin-right:0px;
+}
+.gutter-left-5 {
+    padding-left:5px;
+}
+.gutter-right-5 {
+    padding-right:5px;
 }
 
 .gutter1 {
@@ -63,8 +67,18 @@
     display: inline-block;
 }
 
-
-
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type=number] { 
+    -moz-appearance: textfield; 
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 
 /* center element vertically and horizontally */

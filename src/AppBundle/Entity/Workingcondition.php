@@ -32,6 +32,13 @@ class Workingcondition
      * @ORM\Column(name="isDefault", type="boolean", nullable=true)
      */
     private $isdefault;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isActive", type="boolean", nullable=true)
+     */
+    private $isactive;    
 
     /**
      * @var \DateTime
@@ -56,13 +63,10 @@ class Workingcondition
      */
     private $id;
 
-
-
     /**
      * Set workingcondition
      *
      * @param string $workingcondition
-     *
      * @return Workingcondition
      */
     public function setWorkingcondition($workingcondition)
@@ -75,7 +79,7 @@ class Workingcondition
     /**
      * Get workingcondition
      *
-     * @return string
+     * @return string 
      */
     public function getWorkingcondition()
     {
@@ -86,7 +90,6 @@ class Workingcondition
      * Set multiplier
      *
      * @param integer $multiplier
-     *
      * @return Workingcondition
      */
     public function setMultiplier($multiplier)
@@ -99,7 +102,7 @@ class Workingcondition
     /**
      * Get multiplier
      *
-     * @return integer
+     * @return integer 
      */
     public function getMultiplier()
     {
@@ -110,7 +113,6 @@ class Workingcondition
      * Set isdefault
      *
      * @param boolean $isdefault
-     *
      * @return Workingcondition
      */
     public function setIsdefault($isdefault)
@@ -123,7 +125,7 @@ class Workingcondition
     /**
      * Get isdefault
      *
-     * @return boolean
+     * @return boolean 
      */
     public function getIsdefault()
     {
@@ -131,10 +133,32 @@ class Workingcondition
     }
 
     /**
+     * Set isactive
+     *
+     * @param boolean $isactive
+     * @return Workingcondition
+     */
+    public function setIsactive($isactive)
+    {
+        $this->isactive = $isactive;
+
+        return $this;
+    }
+
+    /**
+     * Get isactive
+     *
+     * @return boolean 
+     */
+    public function getIsactive()
+    {
+        return $this->isactive;
+    }
+
+    /**
      * Set createdat
      *
      * @param \DateTime $createdat
-     *
      * @return Workingcondition
      */
     public function setCreatedat($createdat)
@@ -147,7 +171,7 @@ class Workingcondition
     /**
      * Get createdat
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedat()
     {
@@ -158,7 +182,6 @@ class Workingcondition
      * Set updatedat
      *
      * @param \DateTime $updatedat
-     *
      * @return Workingcondition
      */
     public function setUpdatedat($updatedat)
@@ -171,7 +194,7 @@ class Workingcondition
     /**
      * Get updatedat
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedat()
     {
@@ -181,7 +204,7 @@ class Workingcondition
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {

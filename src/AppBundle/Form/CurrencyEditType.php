@@ -14,7 +14,6 @@ class CurrencyEditType extends AbstractType
     {
         $builder
             ->add('isDefault', 'radio', array('label' => false, 'required'=>false))
-            ->add('remove', CheckboxType::class, array('label' => false, 'mapped' => false, 'required'=>false))
             ->add('fuelId', new FuelType());
     }
     
