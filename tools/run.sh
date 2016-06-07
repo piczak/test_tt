@@ -63,10 +63,10 @@ name=$(db_name $file)
 user=$(db_user $file)
 password=$(db_password $file)
 
-if [ "$password"=="null" ]
-then
-    password=''
-fi
+#if [ "$password"=="null" ]
+#then
+#    password=''
+#fi
 
 cd ../../
 
@@ -82,9 +82,9 @@ cd tools
 
 #echo $host, $name, $user, $password
 
-mysql --host=$host --user=$user --password=$test $name < TCO.sql
+mysql --host=$host --user=$user --password=$password $name < TCO.sql
 
-
+#mysql --host=localhost --user=root --password=root TCO < TCO2.sql
 
 
 

@@ -92,16 +92,6 @@ class ModelTier
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Tier
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tier")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tier_id", referencedColumnName="id")
-     * })
-     */
-    private $tier;
-
-    /**
      * @var \AppBundle\Entity\Model
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Model")
@@ -111,6 +101,15 @@ class ModelTier
      */
     private $model;
 
+    /**
+     * @var \AppBundle\Entity\Tier
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tier", fetch="EAGER")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tier_id", referencedColumnName="id")
+     * })
+     */
+    private $tier;
 
 
     /**
@@ -364,30 +363,6 @@ class ModelTier
     }
 
     /**
-     * Set tier
-     *
-     * @param \AppBundle\Entity\Tier $tier
-     *
-     * @return ModelTier
-     */
-    public function setTier(\AppBundle\Entity\Tier $tier = null)
-    {
-        $this->tier = $tier;
-
-        return $this;
-    }
-
-    /**
-     * Get tier
-     *
-     * @return \AppBundle\Entity\Tier
-     */
-    public function getTier()
-    {
-        return $this->tier;
-    }
-
-    /**
      * Set model
      *
      * @param \AppBundle\Entity\Model $model
@@ -409,5 +384,29 @@ class ModelTier
     public function getModel()
     {
         return $this->model;
+    }
+
+    /**
+     * Set tier
+     *
+     * @param \AppBundle\Entity\Tier $tier
+     *
+     * @return ModelTier
+     */
+    public function setTier(\AppBundle\Entity\Tier $tier = null)
+    {
+        $this->tier = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Get tier
+     *
+     * @return \AppBundle\Entity\Tier
+     */
+    public function getTier()
+    {
+        return $this->tier;
     }
 }

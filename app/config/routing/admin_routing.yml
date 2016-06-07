@@ -1,2 +1,5 @@
 calculator:
     resource: "admin/calculator_routing.yml"
+
+config:
+    resource: "admin/config_routing.yml"

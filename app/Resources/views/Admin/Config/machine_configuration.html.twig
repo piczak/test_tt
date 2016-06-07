@@ -1,0 +1,272 @@
+                        <div id="machineconfig" class="tab-pane fade machine-config">
+                            <div class="bootstrap-table">
+                                <div class="fixed-table-toolbar">
+                                    <div class="bars pull-left"></div>
+
+                                    <div class="columns columns-right btn-group pull-right">
+                                        <button class="btn btn-default" title="Hide/Show pagination" name="paginationSwitch" type="button">
+                                            <i class="glyphicon glyphicon-collapse-down icon-chevron-down"></i>
+                                        </button>
+
+                                        <button class="btn btn-default" title="Refresh" name="refresh" type="button">
+                                            <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                                        </button>
+
+                                        <button class="btn btn-default" title="Toggle" name="toggle" type="button">
+                                            <i class="glyphicon glyphicon-list-alt icon-list-alt"></i>
+                                        </button>
+
+                                        <div class="keep-open btn-group" title="Columns">
+                                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                                <i class="glyphicon glyphicon-th icon-th"></i>
+
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="0" data-field="0">
+                                                        PRODUCT
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="1" data-field="1">
+                                                        MODEL
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="2" data-field="2">
+                                                        TIER
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="3" data-field="3">
+                                                        ProCare?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="4" data-field="4">
+                                                        Fuel Usage (gal/hr)
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="5" data-field="5">
+                                                        Fuel Usage (l/hr)
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="6" data-field="6">
+                                                        SCR Available?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="7" data-field="7">
+                                                        With Tires?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="8" data-field="8">
+                                                        With Tracks?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" value="9" data-field="9">
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="export btn-group">
+                                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                                <i class="glyphicon glyphicon-export icon-share"></i>
+
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li data-type="csv">
+                                                    <a href="javascript:void(0)">CSV</a>
+                                                </li>
+
+                                                <li data-type="excel">
+                                                    <a href="javascript:void(0)">MS-Excel</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right search">
+                                        <input class="form-control" type="text" placeholder="Search">
+                                    </div>
+                                </div>
+
+                                <div class="fixed-table-container" style="height: 510px; padding-bottom: 0px;">
+                                    <div class="fixed-table-header">
+                                        <table></table>
+                                    </div>
+                                    <div class="fixed-table-body">
+                                        <div class="fixed-table-loading" style="top: 1px; display: none;">Loading, please wait...</div>
+
+                                        <table id="configuration" class="table table-hover" data-export-types="['csv','excel']" data-toolbar="#toolbar" data-page-list="[10, 25, 50, 100, ALL]" data-smart-display="true" data-height="550" data-page-size="15" data-page-number="1" data-pagination="true" data-show-pagination-switch="true" data-show-export="true" data-show-columns="true" data-show-toggle="true" data-show-refresh="true" data-search="true" data-order="asc" data-sortable="true" data-data-type="json" data-url="https://spreadsheets.google.com/feeds/list/1KfH3mZg13cQNXdEXfNJGJPk-W26X6CaFVFIt-EY8YCs/od6/public/values?alt=json" data-toggle="table">
+                                            <thead style="">
+                                                <tr>
+                                                    <th tabindex="0" data-field="0" style="">
+                                                        <div class="th-inner sortable both">PRODUCT</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="1" style="">
+                                                        <div class="th-inner sortable both">MODEL</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="2" style="">
+                                                        <div class="th-inner sortable both">TIER</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="3" style="">
+                                                        <div class="th-inner sortable both">ProCare?</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="4" style="">
+                                                        <div class="th-inner sortable both">Fuel Usage (gal/hr)</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="5" style="">
+                                                        <div class="th-inner sortable both">Fuel Usage (l/hr)</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="6" style="">
+                                                        <div class="th-inner sortable both">SCR Available?</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="7" style="">
+                                                        <div class="th-inner sortable both">With Tires?</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="8" style="">
+                                                        <div class="th-inner sortable both">With Tracks?</div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+
+                                                    <th tabindex="0" data-field="9" style="">
+                                                        <div class="th-inner "> </div>
+
+                                                        <div class="fht-cell"></div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr data-index="0">
+                                                    <td style="">Wheel Loaders</td>
+                                                    <td style="">521F</td>
+                                                    <td style="">Tier 4 (Interim)</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">3.11</td>
+                                                    <td style="">11.77</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">No</td>
+                                                    <td style="">
+                                                        <a data-target="#edit-config" data-toggle="modal" href="#">
+                                                            <i class="fa fa-cogs"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="1">
+                                                    <td style="">Wheel Loaders</td>
+                                                    <td style="">521F</td>
+                                                    <td style="">Tier 4 (Final)</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">1.11</td>
+                                                    <td style="">4.2</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">Yes</td>
+                                                    <td style="">No</td>
+                                                    <td style="">
+                                                        <a data-target="#edit-config" data-toggle="modal" href="#">
+                                                            <i class="fa fa-cogs"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr data-index="2">
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="fixed-table-footer" style="display: none;">
+                                        <table>
+                                            <tbody>
+                                                <tr></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="fixed-table-pagination">
+                                        <div class="pull-left pagination-detail">
+                                            <span class="pagination-info">Showing 1 to 13 of 13 rows</span>
+                                            <span class="page-list">
+                                                <span class="btn-group dropup">
+                                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+                                                        <span class="page-size">15</span>
+
+                                                        <span class="caret"></span>
+                                                    </button>
+
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            <a href="javascript:void(0)">10</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="javascript:void(0)">25</a>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                                records per page
+                                            </span>
+                                        </div>
+                                        <div class="pull-right pagination" style="display: none;">
+                                            <ul class="pagination">
+                                                <li class="page-pre">
+                                                    <a href="javascript:void(0)">‹</a>
+                                                </li>
+
+                                                <li class="page-number active">
+                                                    <a href="javascript:void(0)">1</a>
+                                                </li>
+
+                                                <li class="page-next">
+                                                    <a href="javascript:void(0)">›</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>

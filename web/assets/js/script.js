@@ -1,5 +1,23 @@
+//$(document).on('click', '.list-group-item', function(){
+//   $(this).siblings().removeClass('active');
+//   $(this).addClass('active');
+//});
+
 $(document).ready(function () {
     
+    $('.list-group-item').on('click', '.text-input', function(event) {
+        event.preventDefault();
+    });
+    
+    $('.list-group-item').on('click', '.only-text', function(event) {
+        event.preventDefault();
+    });
+    
+    $(function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    });
+
     
     //slide-swipe from vendors main.js
     	$('.list-group-item span.slide-swipe').on('click', function(event) {
@@ -131,15 +149,16 @@ $(document).ready(function () {
         centerObject();
         matchHeight();
         
-        
-        var checkedid = $('.prices').find('input:checked').attr('id').match(/[0-9]+/);
-    
-        $('.prices').find('input[type="radio"]').each(function () {
+        if($('.prices').length !== 0) {
+            var checkedid = $('.prices').find('input:checked').attr('id').match(/[0-9]+/);
 
-            if( $(this).attr('id').indexOf(checkedid) > -1 ){
-               $(this).prop('checked', true);
-            }
-        });
+            $('.prices').find('input[type="radio"]').each(function () {
+
+                if( $(this).attr('id').indexOf(checkedid) > -1 ){
+                   $(this).prop('checked', true);
+                }
+            });
+        }
 
     });
 

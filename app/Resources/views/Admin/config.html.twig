@@ -1,0 +1,55 @@
+{% extends 'Admin/admin_header.html.twig' %}
+
+{% block title %} - Master Lists Config{% endblock %}
+{% block sitename %}Master Lists Config{% endblock %}
+{% block page %}
+    
+    
+    {% form_theme formProduct 'Theme/Calculator/calculator_form_theme.html.twig' %}
+    {% form_theme formTier 'Theme/Calculator/calculator_form_theme.html.twig' %}
+
+    <div class="container-fluid config" style="background-color:white;" ng-app="ngAnimate">
+        {# side-nav sm-lg #}
+        {% include 'Admin/admin_side_nav.html.twig' %}
+
+        <div id="page-content-wrapper" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <h1 class="page-header">MASTER LISTS CONFIG</h1>
+
+            <div class="tabbable-panel">
+
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a data-toggle="tab" href="#masterlists">Master Lists</a>
+                        </li>
+
+                        <li>
+                            <a data-toggle="tab" href="#machineconfig">Machine Configuration</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        
+                        {% include 'Admin/Config/master_list.html.twig' %}
+                        
+                        {% include 'Admin/Config/machine_configuration.html.twig' %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            $( "#sortable-default, #sortable-list" ).sortable({
+                connectWith: ".connected-sortable",
+                tolerance:"pointer"
+            }).disableSelection();
+        });
+    </script>
+{% endblock %}

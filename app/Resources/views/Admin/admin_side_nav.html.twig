@@ -1,8 +1,8 @@
     {# xs menu #}
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav nav-sidebar">
-            <li class="active"><a href="index.html"><i class="fa fa-calculator"></i> Calculator Settings</a></li>
-            <li><a href="masterlist.html"><i class="fa fa-th-list"></i> Master Lists Config</a></li>
+            <li class="active"><a href="{{ path('calculator_show') }}"><i class="fa fa-calculator"></i> Calculator Settings</a></li>
+            <li><a href="{{ path('config_show') }}"><i class="fa fa-th-list"></i> Master Lists Config</a></li>
             <li><a href="sqt.html"><i class="fa fa-table"></i> SQT Mapping and Publishing</a></li>
             <li><a href="users.html"><i class="fa fa-users"></i> Users</a></li> <li><a class="cache ladda-button" data-style="expand-right"><i class="fa fa-refresh"></i> Clear Cache</a></li>
         </ul>
@@ -11,8 +11,8 @@
     {# sm-lg menu #}
     <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-            <li class="active"><a href="index.html"><i class="fa fa-calculator"></i> Calculator Settings</a></li>
-            <li><a href="masterlist.html"><i class="fa fa-th-list"></i> Master Lists Config</a></li>
+            <li class="active"><a href="{{ path('calculator_show') }}"><i class="fa fa-calculator"></i> Calculator Settings</a></li>
+            <li><a href="{{ path('config_show') }}"><i class="fa fa-th-list"></i> Master Lists Config</a></li>
             <li><a href="sqt.html"><i class="fa fa-table"></i> SQT Mapping and Publishing</a></li>
             <li><a href="users.html"><i class="fa fa-users"></i> Users</a></li> <li><a class="cache ladda-button" data-style="expand-right"><i class="fa fa-refresh"></i> Clear Cache</a></li>
         </ul>

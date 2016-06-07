@@ -2,7 +2,7 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% form_theme form ':Form:fos.html.twig' %}
+{% form_theme form ':Theme:fos.html.twig' %}
 
 {% block body %}
     
@@ -86,11 +86,19 @@
         
         {# form #}
         <div class="screen-center col-xs-10 col-sm-4 col-md-3 text-center">
-            
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-            {{ form_widget(form) }}
+            
+            <p class="margin-top-20 margin-bottom-0"><strong>E-mail</strong></p>
+            {{ form_widget(form.email) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Username</strong></p>
+            {{ form_widget(form.username) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Password</strong></p>
+            {{ form_widget(form.plainPassword.first) }}
+            <p class="margin-top-20 margin-bottom-0"><strong>Confirm password</strong></p>
+            {{ form_widget(form.plainPassword.second) }}
+            
             <div>
-                <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary"/>
+                <input type="submit" value="Register" class="btn btn-primary margin-top-20"/>
             </div>
             {{ form_end(form) }}
 

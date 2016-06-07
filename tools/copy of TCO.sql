@@ -311,7 +311,7 @@ INSERT INTO `model_tier` VALUES ('145', '124', '3', '0', '1', '1', '3.10', '11.7
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('1', 'Articulated Trucks', 'articulated-trucks', '0', '0', '1', '2016-03-30 10:11:23', '2016-03-30 10:11:23');
+INSERT INTO `product` VALUES ('1', 'Articulated Trucks', 'articulated_trucks', '0', '0', '1', '2016-03-30 10:11:23', '2016-03-30 10:11:23');
 INSERT INTO `product` VALUES ('2', 'Backhoe Loaders', 'backhoe-loaders', '1', '1', '2', '2016-04-12 11:45:46', '2016-04-12 11:45:46');
 INSERT INTO `product` VALUES ('3', 'Compact Track Loaders', 'compact-track-loaders', '1', '0', '3', '2016-04-12 11:45:06', '2016-04-12 11:45:06');
 INSERT INTO `product` VALUES ('4', 'Compaction Equipment', 'compaction-equipment', '1', '0', '4', '2016-04-12 11:45:16', '2016-04-12 11:45:16');

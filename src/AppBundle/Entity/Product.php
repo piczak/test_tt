@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Product
@@ -12,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+    
+    protected $forms;
+    
     /**
      * @var string
      *
@@ -22,7 +26,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="url_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="urlName", type="string", length=255, nullable=true)
      */
     private $urlName;
 
@@ -32,6 +36,13 @@ class Product
      * @ORM\Column(name="isActive", type="boolean", nullable=false)
      */
     private $isactive;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isDefault", type="boolean", nullable=false)
+     */
+    private $isdefault;
 
     /**
      * @var integer
@@ -63,8 +74,16 @@ class Product
      */
     private $id;
 
-
-
+    public function __construct()
+    {
+        $this->forms = new ArrayCollection();
+    }
+    
+    public function getForms()
+    {
+        return $this->forms;
+    }
+    
     /**
      * Set product
      *
@@ -123,6 +142,30 @@ class Product
     public function setIsactive($isactive)
     {
         $this->isactive = $isactive;
+
+        return $this;
+    }
+
+    /**
+     * Get isdefault
+     *
+     * @return boolean
+     */
+    public function getIsdefault()
+    {
+        return $this->isdefault;
+    }
+
+    /**
+     * Set isdefault
+     *
+     * @param boolean $isdefault
+     *
+     * @return Product
+     */
+    public function setIsdefault($isdefault)
+    {
+        $this->isdefault = $isdefault;
 
         return $this;
     }
@@ -207,6 +250,20 @@ class Product
     public function getUpdatedat()
     {
         return $this->updatedat;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Product
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**

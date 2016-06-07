@@ -280,3 +280,45 @@ ul {
     padding-left:5px
 }
 
+
+
+
+/* config master */
+
+.config .master-list .product .slide-swipe {
+    right: -15px;
+    top: -6px;
+}
+
+.config .master-list .product .list-group-item.open span.slide-swipe, .config .master-list .product .data-switch.open span.slide-swipe {
+    right: 72px;
+}
+.config .master-list .product .onoffswitch {
+    top: -7px;
+    right: -12px;
+    margin-right:0px;
+}
+.config .master-list .product .input-products {
+    left: 13px;
+    top: -8px;
+}
+.config .master-list .product .input-products input {
+    padding-left:2px;
+    padding-top:7px;
+}
+.product a:hover {
+    text-decoration: none;
+}
+.product .list-group-item {
+    height:40px;
+    transition:none;
+    -webkit-transition:none;
+    -moz-transition:none;
+    -o-transition:none;
+    -ms-transition:none;
+}
+.master-list .list-group-item.active, .master-list .list-group-item.active:hover, .master-list .list-group-item.active:focus {
+    color: #888;
+    background-color: #333;
+    border-color: #333;
+}

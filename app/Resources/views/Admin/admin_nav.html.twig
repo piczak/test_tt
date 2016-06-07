@@ -1,15 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block body %}
 
     <div class="overlay"></div>
-    <div class="wrapper">
-        
-    {% include 'Test/admin_header.html.twig' %}
     
-    {% include 'Test/admin_side_nav.html.twig' %}
+    <div class="wrapper">
     
     {% block content %}{% endblock %}
+    
+    {% include 'Admin/admin_side_nav.html.twig' %}
+    
     </div>
     
 {% endblock %}

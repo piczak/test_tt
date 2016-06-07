@@ -28,6 +28,7 @@
         
         <!-- admin css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin/calculator.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/config.css') }}">
         
         
         {% endblock %}
@@ -35,22 +36,31 @@
     </head>
     
     <body>
+        <div id="msg">
+            <div class="container font-size-24">
 
+                <p>Loading...</p>
+
+            </div>
+        </div>
+        <div id="body" style="display:none;">
     {% block body %}{% endblock %}
-    
+        </div>
     
     {% block javascripts %}
+
+        
         
         <!-- vendor scripts -->
         <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-2.1.1.js') }}"></script>
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/jquery-ui.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/spin.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/ladda.min.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/main.js') }}"></script>
-        <script type="application/javascript" src="{{ asset('assets/js/vendor/sortable.js') }}"></script>
+        <!--<script type="application/javascript" src="{{ asset('assets/js/vendor/sortable.js') }}"></script>
         <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table.js') }}"></script>
-        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table-export.js') }}"></script>
-        
+        <script type="application/javascript" src="{{ asset('assets/js/vendor/bootstrap-table-export.js') }}"></script>-->
         
         
         
@@ -59,6 +69,13 @@
         
         <!-- not vendor -->
         <script type="application/javascript" src="{{ asset('assets/js/script.js') }}"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#body').show();
+                $('#msg').hide();
+            });
+        </script>
         
     {% endblock %}
     
