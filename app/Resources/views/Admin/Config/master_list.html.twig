@@ -1,4 +1,4 @@
-<div id="masterlists" class="tab-pane active in fade master-list">
+<div id="masterlists" class="tab-pane active in fade master-list config">
     <div class="row">
 
         {{ form_start(formProduct, {'attr': {'id': 'task_product'}}) }}
@@ -6,132 +6,88 @@
         <div class="col-xs-12">
             <button type="submit" form="task_product" class="col-xs-12 btn btn-tan ladda-button" data-style="expand-right" type="button">
                 <span class="ladda-label">Save changes</span>
+
                 <span class="ladda-spinner"></span>
             </button>
         </div>
 
-        <div class="col-md-4 product">
+        <div class="col-md-4">
             <h4>PRODUCT</h4>
 
             <div class="well well-sm">
-                <p style="margin-bottom:0;">
+                <p class="margin-bottom-0">
                     Default product container
                     <small class="text-muted">( drag & drop a product here )</small>
                 </p>
 
-                <ul class="connected-sortable" id="sortable-default" style="width:100%; min-height:42px;">
+                <ul class="connected-sortable" id="sortable-product" style="width:100%; min-height:42px;">
 
                 </ul>
             </div>
 
-            <ul class="connected-sortable" id="sortable-list">
+            <ul class="list-group connected-sortable" id="sortable-product-list">
 
                 {% for product in formProduct.forms %}
 
                     {% if product.vars.data.forms != null or app.request.get('product') == product.vars.data.urlName %}
 
-                        <a href="{{ path('config_show_product', {'product': product.vars.data.urlName}) }}" class="list-group-item active make-default">
-
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <span class="drag-handle" style="display:inline;">
-                                        <i class="fa fa-navicon" style="color:white;"></i>
-                                    </span>
-
-                                    <div class="overlay-show input-products" ng-show="toggle_product_{{ product.vars.data.id }}">
-                                        <span class="only-text" style="display:table-cell;">
-                                            {{ form_row(product.product) }}
-                                        </span>
-                                    </div>
-
-                                    <span class="text-input margin-right-5" style="color:white; white-space:nowrap;" ng-click="toggle_product_{{ product.vars.data.id }} = !toggle_product_{{ product.vars.data.id }}">
-                                        {{ product.vars.data.product }}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <div class="data-switch pull-right">
-                                    <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
-
-                                    <div class="onoffswitch pull-right">
-
-                                        {{ form_row(product.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
-
-                                        <label for="{{ product.vars.id }}_isActive" class="onoffswitch-label">
-                                            <span class="onoffswitch-inner"></span>
-
-                                            <span class="onoffswitch-switch"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        <a href="{{ path('config_show_product', {'product': product.vars.data.urlName}) }}" class="list-group-item active make-default" data-product-id="{{ product.vars.data.id }}">
 
                     {% else %}
 
-                        <a href="{{ path('config_show_product', {'product': product.vars.data.urlName}) }}" class="list-group-item make-default">
+                        <a href="{{ path('config_show_product', {'product': product.vars.data.urlName}) }}" class="list-group-item make-default" data-product-id="{{ product.vars.data.id }}">
 
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <span class="drag-handle" style="display:inline;">
-                                        <i class="fa fa-navicon"></i>
-                                    </span>
+                    {% endif %}
+                            <div class="cols-xs-12">
+                                <div class="drag-handle">
+                                    <i class="fa fa-navicon"></i>
+                                </div>
 
-                                    <div class="overlay-show input-products" ng-show="toggle_product_{{ product.vars.data.id }}">
-                                        <span class="only-text" style="display:table-cell;">
-                                            {{ form_row(product.product) }}
-                                        </span>
-                                    </div>
-
-                                    <span class="text-input margin-right-5" style="white-space:nowrap;" ng-click="toggle_product_{{ product.vars.data.id }} = !toggle_product_{{ product.vars.data.id }}">
-                                        {{ product.vars.data.product }}
-                                    </span>
+                                <div class="input-config">
+                                    {{ form_row(product.product, {'attr': {'class': 'form-control input-product' }}) }}
                                 </div>
                             </div>
 
-                            <div class="pull-right">
-                                <div class="data-switch pull-right">
-                                    <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
+                            <div class="data-switch">
+                                <span class="slide-swipe">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                </span>
 
-                                    <div class="onoffswitch pull-right">
-                                        {{ form_row(product.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+                                <div class="onoffswitch">
 
-                                        <label for="{{ product.vars.id }}_isActive" class="onoffswitch-label">
-                                            <span class="onoffswitch-inner"></span>
-                                            <span class="onoffswitch-switch"></span>
-                                        </label>
-                                    </div>
+                                    {{ form_row(product.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+
+                                    <label for="{{ product.vars.id }}_isActive" class="onoffswitch-label">
+                                        <span class="onoffswitch-inner"></span>
+
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
                                 </div>
                             </div>
                         </a>
-
-                    {% endif %}
 
                 {% endfor %}
 
             </ul>
         </div>
 
-
-
         <!-- MODEL -->
-        <div class="col-md-4 product">
+        <div class="col-md-4">
             <h4>MODEL</h4>
 
             <div class="well well-sm">
-                <p style="margin-bottom:0;">
+                <p class="margin-bottom-0">
                     Default product container
                     <small class="text-muted">( drag & drop a product here )</small>
                 </p>
 
-                <ul class="connected-sortable" id="sortable-default1" style="width:100%; min-height:42px;">
+                <ul class="connected-sortable" id="sortable-model" style="width:100%; min-height:42px;">
 
                 </ul>
 
             </div>
 
-
-            <ul class="connected-sortable" id="">
+            <ul class="connected-sortable" id="sortable-list-model">
 
                 {% for formProduct in formProduct.forms %}
 
@@ -141,88 +97,39 @@
 
                             {% if formModel.vars.data.forms != null %}
 
-                                <a href="{{ path('config_show_product_model', {'product': formProduct.vars.data.urlName, 'model': formModel.vars.data.model }) }}" class="list-group-item active make-default">
-
-                                    <div class="col-xs-12">
-                                        <div class="row">
-                                            <span class="drag-handle" style="display:inline;">
-                                                <i class="fa fa-navicon"></i>
-                                            </span>
-
-                                            <div class="overlay-show input-products" ng-show="toggle_model_{{ formModel.vars.data.id }}">
-                                                <span class="only-text" style="display:table-cell;">
-                                                    {{ form_row(formModel.model, { 'attr': {'name': 'test'} }) }}
-                                                </span>
-                                            </div>
-
-                                            <span class="text-input margin-right-5" style="white-space:nowrap;"ng-click="toggle_model_{{ formModel.vars.data.id }} = !toggle_model_{{ formModel.vars.data.id }}">
-                                                {{ formModel.vars.data.model }}
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="pull-right">
-                                        <div class="data-switch pull-right">
-
-                                            <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
-
-                                            <div class="onoffswitch pull-right">
-
-                                                {{ form_row(formModel.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
-
-                                                <label for="{{ formModel.vars.data.model }}_isActive" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
-
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                <a class="list-group-item active make-default ui-sortable-handle" href="{{ path('config_show_product_model', {'product': formProduct.vars.data.urlName, 'model': formModel.vars.data.model }) }}" data-product-id="{{ formModel.vars.data.product.id }}" data-model-id="{{ formModel.vars.data.id }}">
 
                             {% else %}
 
-                                <a href="{{ path('config_show_product_model', {'product': formProduct.vars.data.urlName, 'model': formModel.vars.data.model }) }}" class="list-group-item make-default">
+                                <a class="list-group-item make-default ui-sortable-handle" href="{{ path('config_show_product_model', {'product': formProduct.vars.data.urlName, 'model': formModel.vars.data.model }) }}" data-product-id="{{ formModel.vars.data.product.id }}" data-model-id="{{ formModel.vars.data.id }}">
 
-                                    <div class="col-xs-12">
-                                        <div class="row">
-                                                    <span class="drag-handle" style="display:inline;">
-                                                        <i class="fa fa-navicon"></i>
-                                                    </span>
+                            {% endif %}
 
-                                            <div class="overlay-show input-products" ng-show="toggle_model_{{ formModel.vars.data.id }}">
-                                                        <span class="only-text" style="display:table-cell;">
-                                                            {{ form_row(formModel.model) }}
-                                                        </span>
-                                            </div>
-
-                                                    <span class="text-input margin-right-5" style="white-space:nowrap;"ng-click="toggle_model_{{ formModel.vars.data.id }} = !toggle_model_{{ formModel.vars.data.id }}">
-                                                        {{ formModel.vars.data.model }}
-                                                    </span>
-                                        </div>
+                                    <div class="drag-handle">
+                                        <i class="fa fa-navicon"></i>
                                     </div>
 
-                                    <div class="pull-right">
-                                        <div class="data-switch pull-right">
+                                    <div class="input-config">
+                                        {{ form_row(formModel.model, {'attr': {'class': 'form-control input-product' }}) }}
+                                    </div>
 
-                                            <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
+                                    <div class="data-switch">
+                                        <span class="slide-swipe">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
 
-                                            <div class="onoffswitch pull-right">
+                                        <div class="onoffswitch">
 
-                                                {{ form_row(formModel.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+                                            {{ form_row(formModel.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
 
-                                                <label for="{{ formModel.vars.data.model }}_isActive" class="onoffswitch-label">
-                                                    <span class="onoffswitch-inner"></span>
+                                            <label for="{{ formModel.vars.id }}_isActive" class="onoffswitch-label">
+                                                <span class="onoffswitch-inner"></span>
 
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
+                                                <span class="onoffswitch-switch"></span>
+                                            </label>
                                         </div>
                                     </div>
                                 </a>
-
-
-                            {% endif %}
 
                         {% endfor %}
 
@@ -232,9 +139,16 @@
 
             </ul>
 
+            <div class="text-right">
+                <button class="btn btn-default btn-xs" data-target="#add-config" data-toggle="modal">
+                    <i class="fa fa-plus"></i>
+                    Add
+                </button>
+            </div>
+
         </div>
 
-        <div class="col-md-4 product">
+        <div class="col-md-4">
             <h4>TIER</h4>
 
             <div class="well well-sm">
@@ -258,325 +172,184 @@
 
                             {{ form_start(formTier, {'attr': {'id': 'task_tier'}}) }}
 
-
-
                                 {% for tier in formModel.forms %}
-
-
 
                                     {% for formTier in formTier.forms %}
 
-
                                         {% if tier.vars.data.id == formTier.vars.data.id %}
-
-
 
                                             {% if tier.vars.data.isdefaulttier %}
 
-
-                                                <li class="list-group-item active make-default">
-                                                    <div class="col-xs-12">
-                                                        <div class="row">
-                                                        <span class="drag-handle" style="display:inline;">
-                                                            <i class="fa fa-navicon"></i>
-                                                        </span>
-
-                                                        <span class="text-input margin-right-5" style="white-space:nowrap;">
-                                                            {{ tier.vars.data.tier.tier }}
-                                                        </span>
-                                                        </div>
-                                                    </div>
-
-                                                <span class="eidt-config" data-target="#{{ tier.vars.data.id }}_modal" data-toggle="modal">
-                                                    <i class="fa fa-cogs"></i>
-                                                </span>
-
-                                                    <div class="pull-right">
-                                                        <div class="data-switch pull-right">
-
-                                                            <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
-
-                                                            <div class="onoffswitch pull-right">
-
-                                                                {{ form_row(tier.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
-
-                                                                <label for="{{ tier.vars.id }}_isActive" class="onoffswitch-label">
-                                                                    <span class="onoffswitch-inner"></span>
-
-                                                                    <span class="onoffswitch-switch"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                {#Modal#}
-                                                <div class="modal fade" id="{{ tier.vars.data.id }}_modal" role="dialog">
-                                                    <div class="modal-dialog">
-
-                                                        <!-- Modal content-->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button class="close" aria-label="Close" data-dismiss="modal" type="button">
-                                                                    <span aria-hidden="true">×</span>
-                                                                </button>
-                                                                <h4 class="modal-title">Edit {{ formTier.vars.data.tier.tier }} Configuration</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <div class="well well-sm clearfix">
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="control-label">Select from existing tier</label>
-
-                                                                                <div class="dropdown">
-                                                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                                                        Dropdown
-                                                                                        <span class="caret"></span>
-                                                                                    </button>
-                                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                                                        <li><a href="#">Action</a></li>
-                                                                                        <li><a href="#">Another action</a></li>
-                                                                                        <li><a href="#">Something else here</a></li>
-                                                                                        <li role="separator" class="divider"></li>
-                                                                                        <li><a href="#">Separated link</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-6">
-                                                                            <label class="control-label">Fuel usage (gal/hr)</label>
-                                                                            {{ form_row(formTier.fuelusageGallonHour) }}
-                                                                        </div>
-                                                                        <div class="form-group col-sm-6">
-                                                                            <label class="control-label">Fuel usage (l/hr)</label>
-                                                                            {{ form_row(formTier.fuelusageLiterHour) }}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">ProCare?</label>
-                                                                            <div class="onoffswitch-yn">
-                                                                                {{ form_row(formTier.isprocare, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isprocare">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">SCR?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.isscr, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isscr">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">With Tires?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.iswithtires, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtires">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">With Tracks?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.iswithtracks, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtracks">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-                                                                    <button type="submit" form="task_tier" class="btn btn-tan ladda-button" data-style="expand-right" type="button">
-                                                                        <span class="ladda-label">Save changes</span>
-                                                                        <span class="ladda-spinner"></span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
+                                            <li class="list-group-item active make-default" data-product-id="{{ tier.vars.data.model.product.id }}" data-model-id="{{ tier.vars.data.model.id }}" data-tier-id="{{ tier.vars.data.id }}" data-tier-name-id="{{ tier.vars.data.id }}">
 
                                             {% else %}
 
-                                                <li class="list-group-item make-default">
-                                                    <div class="col-xs-12">
-                                                        <div class="row">
-                                                        <span class="drag-handle" style="display:inline;">
-                                                            <i class="fa fa-navicon"></i>
-                                                        </span>
+                                            <li class="list-group-item make-default" data-product-id="{{ tier.vars.data.model.product.id }}" data-model-id="{{ tier.vars.data.model.id }}" data-tier-id="{{ tier.vars.data.id }}" data-tier-name-id="{{ tier.vars.data.tier.id }}">
 
-                                                        <span class="text-input margin-right-5" style="white-space:nowrap;">
-                                                            {{ tier.vars.data.tier.tier }}
-                                                        </span>
-                                                        </div>
-                                                    </div>
+                                            {% endif %}
 
-                                                <span class="eidt-config" data-target="#{{ tier.vars.data.id }}_modal" data-toggle="modal">
+                                                <div class="drag-handle">
+                                                    <i class="fa fa-navicon"></i>
+                                                </div>
+
+                                                <div class="text-config">
+                                                    {{ tier.vars.data.tier.tier }}
+                                                </div>
+
+                                                <span class="edit-config" data-target="#{{ tier.vars.data.id }}_modal" data-toggle="modal">
                                                     <i class="fa fa-cogs"></i>
                                                 </span>
 
-                                                    <div class="pull-right">
-                                                        <div class="data-switch pull-right">
+                                                <div class="data-switch">
+                                                    <span class="slide-swipe">
+                                                        <i class="fa fa-ellipsis-v"></i>
+                                                    </span>
 
-                                                            <span class="slide-swipe pull-right"><i class="fa fa-ellipsis-v"></i></span>
+                                                    <div class="onoffswitch">
 
-                                                            <div class="onoffswitch pull-right">
+                                                        {{ form_row(tier.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
 
-                                                                {{ form_row(tier.isActive, {'attr': { 'class': 'onoffswitch-checkbox' }}) }}
+                                                        <label for="{{ tier.vars.id }}_isActive" class="onoffswitch-label">
+                                                            <span class="onoffswitch-inner"></span>
 
-                                                                <label for="{{ tier.vars.id }}_isActive" class="onoffswitch-label">
-                                                                    <span class="onoffswitch-inner"></span>
-
-                                                                    <span class="onoffswitch-switch"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
                                                     </div>
-                                                </li>
+                                                </div>
+                                            </li>
 
-                                                {#Modal#}
-                                                <div class="modal fade" id="{{ tier.vars.data.id }}_modal" role="dialog">
-                                                    <div class="modal-dialog">
+                                            {#Modal#}
+                                            <div class="modal fade" id="{{ tier.vars.data.id }}_modal" role="dialog">
+                                                <div class="modal-dialog">
 
-                                                        <!-- Modal content-->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button class="close" aria-label="Close" data-dismiss="modal" type="button">
-                                                                    <span aria-hidden="true">×</span>
-                                                                </button>
-                                                                <h4 class="modal-title">Edit {{ formTier.vars.data.tier.tier }} Configuration</h4>
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button class="close" aria-label="Close" data-dismiss="modal" type="button">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+
+                                                            <h4 class="modal-title">Edit {{ formTier.vars.data.tier.tier }} Configuration</h4>
+                                                        </div>
+
+                                                        <div class="modal-body">
+                                                            <div class="well well-sm clearfix">
+                                                                <div class="row">
+                                                                    <div class="form-group col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Select from existing tier</label>
+
+                                                                            <div class="dropdown">
+                                                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                                    Dropdown
+                                                                                    <span class="caret"></span>
+                                                                                </button>
+
+                                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                                                    <li><a href="#">Action</a></li>
+                                                                                    <li><a href="#">Another action</a></li>
+                                                                                    <li><a href="#">Something else here</a></li>
+                                                                                    <li role="separator" class="divider"></li>
+                                                                                    <li><a href="#">Separated link</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="form-group col-sm-6">
+                                                                        <label class="control-label">Fuel usage (gal/hr)</label>
+
+                                                                        {{ form_row(formTier.fuelusageGallonHour) }}
+
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-6">
+                                                                        <label class="control-label">Fuel usage (l/hr)</label>
+
+                                                                        {{ form_row(formTier.fuelusageLiterHour) }}
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="form-group col-sm-3 col-xs-6">
+                                                                        <label class="control-label">ProCare?</label>
+
+                                                                        <div class="onoffswitch-yn">
+                                                                            {{ form_row(formTier.isprocare, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
+
+                                                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isprocare">
+                                                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                                                <span class="onoffswitch-yn-switch"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-3 col-xs-6">
+                                                                        <label class="control-label">SCR?</label>
+
+                                                                        <div class="onoffswitch-yn">
+
+                                                                            {{ form_row(formTier.isscr, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
+
+                                                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isscr">
+                                                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                                                <span class="onoffswitch-yn-switch"></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-3 col-xs-6">
+                                                                        <label class="control-label">With Tires?</label>
+
+                                                                        <div class="onoffswitch-yn">
+
+                                                                            {{ form_row(formTier.iswithtires, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
+
+                                                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtires">
+                                                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                                                <span class="onoffswitch-yn-switch"></span>
+                                                                            </label>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-sm-3 col-xs-6">
+                                                                        <label class="control-label">With Tracks?</label>
+
+                                                                        <div class="onoffswitch-yn">
+
+                                                                            {{ form_row(formTier.iswithtracks, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
+
+                                                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtracks">
+                                                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                                                <span class="onoffswitch-yn-switch"></span>
+                                                                            </label>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <div class="well well-sm clearfix">
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <label class="control-label">Select from existing tier</label>
 
-                                                                                <div class="dropdown">
-                                                                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                                                        Dropdown
-                                                                                        <span class="caret"></span>
-                                                                                    </button>
-                                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                                                                        <li><a href="#">Action</a></li>
-                                                                                        <li><a href="#">Another action</a></li>
-                                                                                        <li><a href="#">Something else here</a></li>
-                                                                                        <li role="separator" class="divider"></li>
-                                                                                        <li><a href="#">Separated link</a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-6">
-                                                                            <label class="control-label">Fuel usage (gal/hr)</label>
-                                                                            {{ form_row(formTier.fuelusageGallonHour) }}
-                                                                        </div>
-                                                                        <div class="form-group col-sm-6">
-                                                                            <label class="control-label">Fuel usage (l/hr)</label>
-                                                                            {{ form_row(formTier.fuelusageLiterHour) }}
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">ProCare?</label>
-                                                                            <div class="onoffswitch-yn">
-                                                                                {{ form_row(formTier.isprocare, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
 
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isprocare">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
+                                                                <button type="submit" form="task_tier" class="btn btn-tan ladda-button" data-style="expand-right" type="button">
+                                                                    <span class="ladda-label">Save changes</span>
 
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">SCR?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.isscr, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isscr">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">With Tires?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.iswithtires, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtires">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group col-sm-3 col-xs-6">
-                                                                            <label class="control-label">With Tracks?</label>
-                                                                            <div class="onoffswitch-yn">
-
-                                                                                {{ form_row(formTier.iswithtracks, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}
-
-                                                                                <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtracks">
-                                                                                    <span class="onoffswitch-yn-inner"></span>
-
-                                                                                    <span class="onoffswitch-yn-switch"></span>
-                                                                                </label>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-
-                                                                    <button type="submit" form="task_tier"  class="btn btn-tan ladda-button" data-style="expand-right" type="button">
-                                                                        <span class="ladda-label">Save changes</span>
-
-                                                                        <span class="ladda-spinner"></span>
-                                                                    </button>
-                                                                </div>
+                                                                    <span class="ladda-spinner"></span>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            {% endif %}
+                                            </div>
 
                                         {% endif %}
 
@@ -595,16 +368,146 @@
             </ul>
 
             <div class="text-right">
-                <button class="btn btn-default btn-xs" data-target="#add-config" data-toggle="modal">
+                <button type="button" class="btn btn-default btn-xs" data-target="#add_tier_modal" data-toggle="modal">
                     <i class="fa fa-plus"></i>
                     Add
                 </button>
+            </div>
+
+            <div class="modal fade" id="add_tier_modal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" aria-label="Close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                            <h4 class="modal-title">Add new Tier</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="well well-sm clearfix">
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Select from existing tier</label>
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    Dropdown
+                                                    <span class="caret"></span>
+                                                </button>
+
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label class="control-label">Fuel usage (gal/hr)</label>
+
+                                        {#{{ form_row(formTier.fuelusageGallonHour) }}#}
+
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label class="control-label">Fuel usage (l/hr)</label>
+
+                                        {#{{ form_row(formTier.fuelusageLiterHour) }}#}
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-3 col-xs-6">
+                                        <label class="control-label">ProCare?</label>
+
+                                        <div class="onoffswitch-yn">
+                                            {#{{ form_row(formTier.isprocare, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}#}
+
+                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isprocare">
+                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                <span class="onoffswitch-yn-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-3 col-xs-6">
+                                        <label class="control-label">SCR?</label>
+
+                                        <div class="onoffswitch-yn">
+
+                                            {#{{ form_row(formTier.isscr, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}#}
+
+                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_isscr">
+                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                <span class="onoffswitch-yn-switch"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-3 col-xs-6">
+                                        <label class="control-label">With Tires?</label>
+
+                                        <div class="onoffswitch-yn">
+
+                                            {#{{ form_row(formTier.iswithtires, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}#}
+
+                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtires">
+                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                <span class="onoffswitch-yn-switch"></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-3 col-xs-6">
+                                        <label class="control-label">With Tracks?</label>
+
+                                        <div class="onoffswitch-yn">
+
+                                            {#{{ form_row(formTier.iswithtracks, {'attr': { 'class': 'onoffswitch-yn-checkbox' }}) }}#}
+
+                                            <label class="onoffswitch-yn-label" for="{{ formTier.vars.id }}_iswithtracks">
+                                                <span class="onoffswitch-yn-inner"></span>
+
+                                                <span class="onoffswitch-yn-switch"></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+
+                                <button type="submit" form="task_tier" class="btn btn-tan ladda-button" data-style="expand-right" type="button">
+                                    <span class="ladda-label">Save changes</span>
+
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         {{ form_end(formProduct) }}
 
     </div>
-
-
 </div>

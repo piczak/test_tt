@@ -1,0 +1,38 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{%- block form_row -%}
+    {% set class = '' %}
+    {% if form.vars.errors is not empty %}
+        {% set class = 'has-error ' %}
+    {% endif %}
+        {{- form_widget(form) -}}
+{%- endblock form_row -%}
+
+{#{%- block form_widget_simple -%}#}
+    {#{%- set type = type|default('text') -%}#}
+        {#{% if 'model' in block('widget_attributes') %}#}
+            {#<input class="form-control model-input" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>#}
+            {#{{ dump() }}#}
+        {#{% else %}#}
+            {#<input class="form-control product-input" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>#}
+        {#{% endif %}#}
+{#{%- endblock form_widget_simple -%}#}
+
+{%- block checkbox_input -%}
+    {%- set type = type|default('checkbox') -%}
+
+        <input class="dupa" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+{%- endblock checkbox_input -%}
+
+{%- block radio_input -%}
+    {%- set type = type|default('radio') -%}
+    {%- set id = id|default('radio'~form.vars.data.id)  -%}
+
+        <div class="funkyradio">
+            <div class="funkyradio-success">
+                <input type="radio" name="radio" id="radio2" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                <label for="radio2"></label>
+            </div>
+        </div>
+{%- endblock radio_input -%}

@@ -11,7 +11,7 @@ use AppBundle\Form\TierTaskType;
 
 class ConfigController extends AbstractController
 {
-public function showAction(Request $request)
+    public function showAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -28,6 +28,8 @@ public function showAction(Request $request)
             }
         }
 
+
+
         if($counter == 1) {
             foreach ($products as $product) {
                 if ($product->getIsDefault() == 1){
@@ -35,11 +37,32 @@ public function showAction(Request $request)
 
                     $models = $this->getDoctrine()->getRepository('AppBundle:Model')->findByProduct($id);
 
-                    $modelActive = $this->getDoctrine()->getRepository('AppBundle:Model')->findOneByIsdefault(1);
+                    $counter = 0;
+                    $modeldefaultId = null;
 
-                    $modelActiveId = $modelActive->getId();
+                    foreach($models as $model) {
 
-                    $modelTierActive = $this->getDoctrine()->getRepository('AppBundle:ModelTier')->findByModel($modelActiveId);
+                        if ($model->getIsdefault() == 1) {
+                            $counter++;
+                        }
+                    }
+
+                    if ($counter == 1) {
+                        foreach ($models as $model) {
+                            if ($model->getIsdefault() == 1) {
+                                $modeldefaultId = $model->getId();
+                            }
+                        }
+
+                    } else {
+                        foreach ($models as $model) {
+                            if ($models['0'] == $model) {
+                                $modeldefaultId = $model->getId();
+                            }
+                        }
+                    }
+
+                    $modelTierActive = $this->getDoctrine()->getRepository('AppBundle:ModelTier')->findByModel($modeldefaultId);
 
                     $activeModel = $this->container->get('admin_config')->tier($models, $modelTierActive);
 
@@ -57,11 +80,7 @@ public function showAction(Request $request)
             }
         }
 
-        
-        
-        
-        
-        
+
         $formTier = $this->createForm(TierTaskType::class, $tierTask, array(
             'action' => $this->generateUrl('config_show')
         ));
@@ -70,22 +89,56 @@ public function showAction(Request $request)
             'action' => $this->generateUrl('config_show')
         ));
 
-        if ($request->isMethod('POST')){
+        if($request->isXmlHttpRequest()){
+            $jsonData = $request->getContent();
+            $input = json_decode($jsonData);
 
-            $this->container->get('admin_config')->dbInsert($request, $em);
+            print_r($input);
 
+            if($input->type == 'product') {
+
+                $product = $em->getRepository('AppBundle:Product')->find($input->productId);
+
+                if(isset($input->value)) {
+                    $urlName = strtolower(str_replace(' ', '-', $input->value));
+                    $product->setProduct($input->value);
+                    $product->setUrlName($urlName);
+                }
+                if (isset($input->active)) {
+                    $product->setIsactive($input->active);
+                }
+
+                $em->flush();
+
+            } else if ($input->type == 'model') {
+
+                $model = $em->getRepository('AppBundle:Model')->find($input->modelId);
+
+                if (isset($input->value)) {
+                    $model->setModel($input->value);
+                }
+                if (isset($input->active)) {
+                    $model->setIsactive($input->active);
+                }
+
+                $em->flush();
+
+            } else if ($input->type == 'tier') {
+
+                $tier = $em->getRepository('AppBundle:ModelTier')->find($input->tierId);
+
+                if (isset($input->active)) {
+                    $tier->setIsactive($input->active);
+                }
+
+                $em->flush();
+            }
         }
 
-        
-        
-        
-        
-        
-        
+
         return $this->render('Admin/config.html.twig', array( 'formProduct' => $formProduct->createView(), 'formTier' => $formTier->createView() ));
     }
-    
-    
+
     public function productAction(Request $request, $product) {
 
         $tierTask = new TierTask();
@@ -150,7 +203,7 @@ public function showAction(Request $request)
 
         return $this->render('Admin/config.html.twig', array( 'formProduct' => $formProduct->createView(), 'formTier' => $formTier->createView(), 'tiers' => $tiers ));
     }
-    
+
     public function modelAction(Request $request, $product, $model){
 
         $productTask = new ProductTask();
@@ -194,7 +247,7 @@ public function showAction(Request $request)
         $formTier = $this->createForm(TierTaskType::class, $tierTask, array(
             'action' => $this->generateUrl('config_show')
         ));
-        
+
 
         $formProduct = $this->createForm(ProductTaskType::class, $productTask, array(
             'action' => $this->generateUrl('config_show')

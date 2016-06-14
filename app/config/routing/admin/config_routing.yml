@@ -2,10 +2,6 @@ config_show:
   path: /config
   defaults: {_controller: AppBundle:Admin\Config:show}
 
-test2:
-  path: /config/test2
-  defaults: {_controller: AppBundle:Admin\Config:test2}
-
 config_show_product:
   path: /config/{product}
   defaults: {_controller: AppBundle:Admin\Config:product, product: backhoe-loaders}

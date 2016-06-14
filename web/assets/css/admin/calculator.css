@@ -305,10 +305,25 @@ ul {
 .config .master-list .product .input-products input {
     padding-left:2px;
     padding-top:7px;
+    background-color:transparent;
+    border:transparent 1px solid;
+    box-shadow:none;
 }
+.config .master-list .product .input-products input:focus {
+    border:#999 1px solid;
+}
+.config .master-list .product .input-products input {
+    padding-left:2px;
+    padding-top:7px;
+    background-color:transparent;
+    border:transparent 1px solid;
+    box-shadow:none;
+}
+
 .product a:hover {
     text-decoration: none;
 }
+
 .product .list-group-item {
     height:40px;
     transition:none;
@@ -317,8 +332,17 @@ ul {
     -o-transition:none;
     -ms-transition:none;
 }
+
 .master-list .list-group-item.active, .master-list .list-group-item.active:hover, .master-list .list-group-item.active:focus {
-    color: #888;
+    /*color: #888;*/
     background-color: #333;
     border-color: #333;
+}
+
+.config .list-group-item .input-text {
+    white-space:nowrap;
+}
+.config .list-group-item.active .input-text {
+    color:white;
+    white-space:nowrap;
 }

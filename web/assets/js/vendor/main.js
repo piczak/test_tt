@@ -9,24 +9,24 @@ $(document).on('click', '#add-work', function() {
     }
 
 
-    
-  
-    
+
+
+
     //change increment number in the string
 //    var ngshow = $('.work-empty tr').last().find('.overlay-show').attr('ng-show').replace(/\d/, function(n){ return ++n });
 //
 //    $('.work-empty tr').last().find('.overlay-show').removeClass('ng-hide').attr('ng-show', ngshow);
-    
+
 //    var id = $('.work-empty tr').last().find('.form-control').attr('id').replace(/\d/, function(n){ return ++n });
-//    
+//
 //    $('.work-empty tr').last().find('.form-control').attr('id', id);
-    
+
 //    var name = $('.work-empty tr').last().find('.form-control').attr('name').replace(/\d/, function(n){ return ++n });
-//    
+//
 //    $('.work-empty tr').last().find('.form-control').attr('name', name);
-    
+
 //    $('.work-empty tr').last().find('.only-text').attr('ng-click', ngshow+' = !'+ngshow);
-    
+
     //alert(string+number);
 //    var ng = $.element.find('.overlay-show').attr('ng-show');
 //    alert(ng);
@@ -37,36 +37,36 @@ $(document).ready(function() {
 	$('[data-toggle="popover"]').popover();
 	//switch html text to input form
 	$('.text-input').click(fnEditableText);
-	
+
 	var trigger = $('.hamburger'),
 	  overlay = $('.overlay'),
 	 isClosed = false;
 
 	trigger.click(function () {
-	  hamburger_cross();      
+	  hamburger_cross();
 	});
 
 	function hamburger_cross() {
 
-	  if (isClosed == true) {          
+	  if (isClosed == true) {
 		overlay.hide();
 		trigger.removeClass('is-open');
 		trigger.addClass('is-closed');
 		isClosed = false;
-	  } else {   
+	  } else {
 		overlay.show();
 		trigger.removeClass('is-closed');
 		trigger.addClass('is-open');
 		isClosed = true;
 	  }
   }
-  
+
   $('[data-toggle="offcanvas"]').click(function () {
 		$('.wrapper').toggleClass('toggled');
   });
-	
+
 	var adjustment;
-	
+
 	$("ul.productlist").sortable({
 	  group: 'productlist',
 	  handle: '.drag-handle',
@@ -85,12 +85,12 @@ $(document).ready(function() {
 	  onDragStart: function ($item, container, _super) {
 		var offset = $item.offset(),
 			pointer = container.rootGroup.pointer;
-	
+
 		adjustment = {
 		  left: pointer.left - offset.left,
 		  top: pointer.top - offset.top
 		};
-	
+
 		_super($item, container);
 	  },
 	  onDrag: function ($item, position) {
@@ -100,7 +100,7 @@ $(document).ready(function() {
 		});
 	  }
 	});
-	
+
 	$("ul.modellist").sortable({
 	  group: 'modellist',
 	  handle: '.drag-handle',
@@ -119,12 +119,12 @@ $(document).ready(function() {
 	  onDragStart: function ($item, container, _super) {
 		var offset = $item.offset(),
 			pointer = container.rootGroup.pointer;
-	
+
 		adjustment = {
 		  left: pointer.left - offset.left,
 		  top: pointer.top - offset.top
 		};
-	
+
 		_super($item, container);
 	  },
 	  onDrag: function ($item, position) {
@@ -134,7 +134,7 @@ $(document).ready(function() {
 		});
 	  }
 	});
-	
+
 	$("ul.tierlist").sortable({
 	  group: 'tierlist',
 	  handle: '.drag-handle',
@@ -153,12 +153,12 @@ $(document).ready(function() {
 	  onDragStart: function ($item, container, _super) {
 		var offset = $item.offset(),
 			pointer = container.rootGroup.pointer;
-	
+
 		adjustment = {
 		  left: pointer.left - offset.left,
 		  top: pointer.top - offset.top
 		};
-	
+
 		_super($item, container);
 	  },
 	  onDrag: function ($item, position) {
@@ -168,13 +168,13 @@ $(document).ready(function() {
 		});
 	  }
 	});
-	
+
 	//Add new model
 	$('#addModel').click(function() {
 		for(var i=0; i<1; i++) {
 			$('.modellist .list-group-item').first().clone().appendTo('.modellist-wrap').css('display','block');
 		}
-		
+
 		$('.modellist .list-group-item').find('.form-control').keypress(function(e) {
 			if(e.which == 13) {
 				var objTxt = $(this).parent();

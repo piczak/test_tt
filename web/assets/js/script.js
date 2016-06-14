@@ -4,12 +4,25 @@
 //});
 
 $(document).ready(function () {
-    
-    $('.list-group-item').on('click', '.text-input', function(event) {
+
+
+    // $('.only-text').on('click', '.list-group-item', function(event) {
+    //     $(this).closest('a', function() {
+    //         event.preventDefault();
+    //     })
+    //     // alert(test);
+    //     // event.preventDefault();
+    // });
+
+    $('.list-group-item').on('click', '.only-text', function(event) {
         event.preventDefault();
     });
-    
-    $('.list-group-item').on('click', '.only-text', function(event) {
+
+    $('.list-group-item').on('click', '.input-config', function(event) {
+        event.preventDefault();
+    });
+
+    $('.list-group-item').on('click', '.text-input', function(event) {
         event.preventDefault();
     });
     

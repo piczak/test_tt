@@ -131,6 +131,16 @@ class Product
     {
         return $this->urlName;
     }
+    
+    /**
+     * Get isactive
+     *
+     * @return boolean
+     */
+    public function getIsactive()
+    {
+        return $this->isactive;
+    }
 
     /**
      * Set isactive
@@ -168,16 +178,6 @@ class Product
         $this->isdefault = $isdefault;
 
         return $this;
-    }
-
-    /**
-     * Get isactive
-     *
-     * @return boolean
-     */
-    public function getIsactive()
-    {
-        return $this->isactive;
     }
 
     /**

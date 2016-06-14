@@ -1,0 +1,129 @@
+{% extends 'Admin/admin_header.html.twig' %}
+
+{% block title %} - Master Lists Config{% endblock %}
+{% block sitename %}Master Lists Config{% endblock %}
+{% block page %}
+
+
+    {% form_theme formProduct 'Theme/Config/config_formProduct_theme.html.twig' %}
+    {% form_theme formTier 'Theme/Calculator/calculator_form_theme.html.twig' %}
+
+    <div class="container-fluid config" style="background-color:white;" ng-app="ngAnimate">
+        {# side-nav sm-lg #}
+        {% include 'Admin/admin_side_nav.html.twig' %}
+
+        <div id="page-content-wrapper" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <h1 class="page-header">MASTER LISTS CONFIG</h1>
+
+            <div class="tabbable-panel">
+
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a data-toggle="tab" href="#masterlists">Master Lists</a>
+                        </li>
+
+                        <li>
+                            <a data-toggle="tab" href="#machineconfig">Machine Configuration</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        {% include 'Admin/Config/master_list.html.twig' %}
+
+                        {% include 'Admin/Config/machine_configuration.html.twig' %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            $( "#sortable-product, #sortable-product-list" ).sortable({
+                connectWith: ".connected-sortable",
+                tolerance:"pointer"
+            }).disableSelection();
+        });
+
+        $(function() {
+            $( "#sortable-default, #sortable-list" ).sortable({
+                connectWith: ".connected-sortable",
+                tolerance:"pointer"
+            }).disableSelection();
+        });
+
+        $(document).ready(function() {
+
+            function ajaxData(inputType, type){
+                var productId = type.closest('.list-group-item').attr('data-product-id');
+                var modelId = type.closest('.list-group-item').attr('data-model-id');
+                var tierId = type.closest('.list-group-item').attr('data-tier-id');
+                var data = {};
+
+                if(inputType == 'text' ){
+                    var value = type.prop('value');
+                    data.value = value;
+                } else {
+                    if(type.is(':checked')){
+                        data.active = 1;
+                    } else {
+                        data.active = 0;
+                    }
+                }
+
+                data.productId = productId;
+                data.modelId = modelId;
+                data.tierId = tierId;
+
+                if (tierId == null) {
+                    if (modelId == null) {
+                        data.productId = productId;
+                        data.type = 'product';
+                    } else {
+                        data.productId = productId;
+                        data.modelId = modelId;
+                        data.type = 'model';
+                    }
+                } else {
+                    data.type = 'tier';
+                    data.tierId = tierId;
+                }
+
+                console.debug(data)
+
+                $.ajax({
+                    url: "{{ path('config_show') }}",
+                    type: "POST",
+                    success: function (type){
+                        //alert(type);
+                    },
+                    data: JSON.stringify(data),
+                    dataType: 'text',
+                    contentType: "application/json; charset=utf-8"
+                });
+
+            }
+
+            $('.list-group-item input[type=checkbox]').on('change', function() {
+                var inputType = 'checkbox';
+                var type = $(this);
+                ajaxData(inputType, type);
+            });
+
+            $('.list-group-item input[type=text]').on('focusout', function () {
+                var inputType = 'text';
+                var type = $(this);
+                ajaxData(inputType, type);
+            });
+
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,49 @@
+.config .list-group-item {
+    height: 40px;
+    padding: 0px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    position:relative;
+    transition: none;
+}
+.config .list-group-item .drag-handle {
+    display: inline-block;
+    position:absolute;
+    left:7px;
+    top:9px;
+}
+.config .list-group-item .text-config {
+    border:1px solid transparent;
+    padding:5px;
+    position:absolute;
+    left:21px;
+    top:3px;
+    box-shadow:none;
+    background-color:transparent;
+}
+.config .list-group-item .input-config input{
+    border:1px solid transparent;
+    padding:5px;
+    width:180px;
+    position:absolute;
+    left:21px;
+    top:2px;
+    box-shadow:none;
+    background-color:transparent;
+}
+.config .list-group-item.active .input-config input{
+    color:#eee;
+}
+.config .list-group-item .input-config input:focus{
+    border:1px solid #999;
+    background-color:#fff;
+}
+.config .list-group-item.active .input-config input:focus{
+    color:#555;
+}
+.config .list-group-item .data-switch {
+    position:absolute;
+    top:6px;
+    right:-8px;
+}
